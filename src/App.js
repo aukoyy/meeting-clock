@@ -18,9 +18,9 @@ class InputFields extends Component{
   constructor(){
     super()
     this.state = {
-      inputData1: 300,
-      inputData2: 300,
-      inputData3: 400,
+      inputData1: 2000,
+      inputData2: 2000,
+      inputData3: 2000,
     }
   }
   componentWillUpdate(nextProps, nextState){
@@ -100,7 +100,7 @@ costPerSecondCalculator(){
   render(){
     return(
       <div>
-          <h3>{this.costPerSecondCalculator()}</h3>
+          <h1>{this.costPerSecondCalculator()}</h1>
 
       </div>
     )
