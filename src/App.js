@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Button, Col } from '@skillsets/react-components';
 
+import InputField from './components/InputField';
 
-const InputField = (props) => {
+/* const InputField = (props) => {
   return (
     <div>
       <input type="number" value={props.value} onChange={event => {
@@ -12,13 +14,13 @@ const InputField = (props) => {
     }/>{props.title}
   </div>
 )
-}
+} */
 
-class InputFields extends Component{
-  constructor(){
+class InputFields extends Component {
+  constructor() {
     super()
     this.state = {
-      inputData1: 2000,
+      inputData1: 5000,
       inputData2: 2000,
       inputData3: 2000,
     }
@@ -37,22 +39,22 @@ class InputFields extends Component{
 
         <InputField value={this.state.inputData1} onValueChanged={(newValue) => {
           this.setState({inputData1: parseFloat(newValue)})
+          }
+        }/>
 
-        }
-      }/>
-      <InputField value={this.state.inputData2} onValueChanged={(newValue) => {
-        this.setState({inputData2: parseFloat(newValue)})
+        <InputField value={this.state.inputData2} onValueChanged={(newValue) => {
+          this.setState({inputData2: parseFloat(newValue)})
 
-      }
-    }/>
-    <InputField value={this.state.inputData3} onValueChanged={(newValue) => {
-      this.setState({inputData3: parseFloat(newValue)})
-
-    }
-  }/>
-</div>
-)
-}
+          }
+        }/>
+        
+        <InputField value={this.state.inputData3} onValueChanged={(newValue) => {
+          this.setState({inputData3: parseFloat(newValue)})
+          }
+        }/>
+      </div>
+    )
+  }
 }
 
 class DisplaySum extends Component{
@@ -130,25 +132,19 @@ class App extends Component {
     return (
       <div className="App">
 
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to The Awesome Meeting Calculator</h1>
-        </header>
-
-
-        <InputFields onValueChanged={newSumParam => this.setSalarySum(newSumParam)}/>
-
-        <DisplaySum inputDataSet={this.state.sumOfSalaries}/>
-
-        <button onClick={() => this.startApp()}>Start Running</button>
-
-        <Timer onTimeChange={newTime => this.setNewTime(newTime)}
-          shouldTimerRun={this.state.shouldTimerRun}/>
-
-
-        <MoneyCounter time={this.state.time} sumOfSalaries={this.state.sumOfSalaries}/>
-
-
+        {/* <InputFields onValueChanged={newSumParam => this.setSalarySum(newSumParam)}/> */}
+        {/* <DisplaySum inputDataSet={this.state.sumOfSalaries}/> */}
+        {/* <button onClick={() => this.startApp()}>Start Running</button> */}
+        {/* <Timer onTimeChange={newTime => this.setNewTime(newTime)}
+          shouldTimerRun={this.state.shouldTimerRun}/> */}
+        {/* <MoneyCounter time={this.state.time} sumOfSalaries={this.state.sumOfSalaries}/> */}
+        
+        <h1>Meeting cost calculator</h1>
+        <InputField />
+        
+        <Col horizontalAlignment={"Center"}>
+          <Button text={"Netlight"} onClick={this.openNetlight} />
+        </Col>
       </div>
     );
   }
