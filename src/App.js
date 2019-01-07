@@ -1,61 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Button, Col } from '@skillsets/react-components';
+import { Button, Col, LARGE } from '@skillsets/react-components';
 
 import InputField from './components/InputField';
+import DisplayEntries from './components/DisplayEntries';
+import SumFields from './components/SumField';
 
-/* const InputField = (props) => {
-  return (
-    <div>
-      <input type="number" value={props.value} onChange={event => {
-        props.onValueChanged(event.target.value)
-      }
-    }/>{props.title}
-  </div>
-)
-} */
-
-class InputFields extends Component {
-  constructor() {
-    super()
-    this.state = {
-      inputData1: 5000,
-      inputData2: 2000,
-      inputData3: 2000,
-    }
-  }
-  componentWillUpdate(nextProps, nextState){
-    const nextSum = nextState.inputData1 + nextState.inputData2 + nextState.inputData3
-    const currentSum = this.state.inputData1 + this.state.inputData2 + this.state.inputData3
-    if(currentSum === nextSum) return
-    this.props.onValueChanged(nextSum)
-  }
-
-  render(){
-    return(
-      <div className="input-fields">
-        <h2>Input your stuff:</h2>
-
-        <InputField value={this.state.inputData1} onValueChanged={(newValue) => {
-          this.setState({inputData1: parseFloat(newValue)})
-          }
-        }/>
-
-        <InputField value={this.state.inputData2} onValueChanged={(newValue) => {
-          this.setState({inputData2: parseFloat(newValue)})
-
-          }
-        }/>
-        
-        <InputField value={this.state.inputData3} onValueChanged={(newValue) => {
-          this.setState({inputData3: parseFloat(newValue)})
-          }
-        }/>
-      </div>
-    )
-  }
-}
 
 class DisplaySum extends Component{
   render(){
@@ -132,22 +83,35 @@ class App extends Component {
     return (
       <div className="App">
 
-        {/* <InputFields onValueChanged={newSumParam => this.setSalarySum(newSumParam)}/> */}
-        {/* <DisplaySum inputDataSet={this.state.sumOfSalaries}/> */}
-        {/* <button onClick={() => this.startApp()}>Start Running</button> */}
-        {/* <Timer onTimeChange={newTime => this.setNewTime(newTime)}
-          shouldTimerRun={this.state.shouldTimerRun}/> */}
-        {/* <MoneyCounter time={this.state.time} sumOfSalaries={this.state.sumOfSalaries}/> */}
-        
-        <h1>Meeting cost calculator</h1>
-        <InputField />
-        
-        <Col horizontalAlignment={"Center"}>
-          <Button text={"Netlight"} onClick={this.openNetlight} />
-        </Col>
+          {/* <InputFields onValueChanged={newSumParam => this.setSalarySum(newSumParam)}/> */}
+          {/* <DisplaySum inputDataSet={this.state.sumOfSalaries}/> */}
+          {/* <button onClick={() => this.startApp()}>Start Running</button> */}
+          {/* <Timer onTimeChange={newTime => this.setNewTime(newTime)}
+            shouldTimerRun={this.state.shouldTimerRun}/> */}
+          {/* <MoneyCounter time={this.state.time} sumOfSalaries={this.state.sumOfSalaries}/> */}
+          
+          <h1>Meeting cost calculator</h1>
+          
+          <InputField addButton={this.addEntry} />
+          
+          
+
+          <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
+            <Button text={"Start meeting"} />
+          </Col>
+          
+          <SumFields />
+          <DisplayEntries />    
+
+      
       </div>
     );
   }
+  addEntry = () => {
+    console.log("Add button press registred")
+    window.open("https://www.netlight.com/", "_blank")
+  }
+
 }
 
 export default App;
