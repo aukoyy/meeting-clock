@@ -8,16 +8,7 @@ import DisplayEntries from './components/DisplayEntries';
 import SumFields from './components/SumField';
 
 
-class DisplaySum extends Component{
-  render(){
-    return(
-      <div>
-        <p>Sum av alle input: </p>
-        <p>{this.props.inputDataSet}</p>
-      </div>
-    )
-  }
-}
+
 
 class Timer extends Component{
   constructor(){
@@ -61,41 +52,14 @@ costPerSecondCalculator(){
 }
 
 class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      sumOfSalaries: 0,
-      time: 3,
-      shouldTimerRun: false
-    }
-  }
-  setSalarySum(newSum){
-    this.setState({sumOfSalaries: newSum})
-  }
-  setNewTime(newTime){
-    this.setState({time: newTime})
-  }
-  startApp(){
-    console.log("start Timer")
-    this.setState({shouldTimerRun: true})
-  }
   render() {
     return (
       <div className="App">
-
-          {/* <InputFields onValueChanged={newSumParam => this.setSalarySum(newSumParam)}/> */}
-          {/* <DisplaySum inputDataSet={this.state.sumOfSalaries}/> */}
-          {/* <button onClick={() => this.startApp()}>Start Running</button> */}
-          {/* <Timer onTimeChange={newTime => this.setNewTime(newTime)}
-            shouldTimerRun={this.state.shouldTimerRun}/> */}
-          {/* <MoneyCounter time={this.state.time} sumOfSalaries={this.state.sumOfSalaries}/> */}
           
           <h1>Meeting cost calculator</h1>
           
           <InputField addButton={this.addEntry} />
           
-          
-
           <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
             <Button text={"Start meeting"} />
           </Col>
