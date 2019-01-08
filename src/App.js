@@ -8,8 +8,6 @@ import DisplayEntries from './components/DisplayEntries';
 import SumFields from './components/SumField';
 
 
-
-
 class Timer extends Component{
   constructor(){
     super()
@@ -65,7 +63,7 @@ class App extends Component {
           </Col>
           
           <SumFields />
-          <DisplayEntries />    
+          {<DisplayEntries />}    
 
       
       </div>

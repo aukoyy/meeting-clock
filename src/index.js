@@ -5,9 +5,13 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-//import { rootReducer } from './reducers' //not created
+import rootReducer from './reducers';
 
-// https://redux.js.org/basics/example
-//const store = createStore(rootReducer)
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(rootReducer)
+
+ReactDOM.render(
+<Provider store={store}>
+    <App /> 
+</Provider>,
+document.getElementById('root'));
 registerServiceWorker();

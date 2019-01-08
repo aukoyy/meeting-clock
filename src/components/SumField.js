@@ -7,8 +7,8 @@ export default class SumFields extends React.Component {
     render () {
         return (
             <div>
-                
-                <h1>lollol</h1>
+                <h2>Time Elapsed:</h2>
+                <h1>Total Meeting Cost: </h1>
                 
             </div>
         )
