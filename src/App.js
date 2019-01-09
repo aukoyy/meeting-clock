@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Button, Col, LARGE } from '@skillsets/react-components';
+import { Button, Col } from '@skillsets/react-components';
 
 import InputField from './components/InputField';
 import DisplayEntries from './components/DisplayEntries';
 import SumFields from './components/SumField';
 
 
-class Timer extends Component{
+/* class Timer extends Component{
   constructor(){
     super()
     this.state = {
@@ -47,7 +46,7 @@ costPerSecondCalculator(){
       </div>
     )
   }
-}
+} */
 
 class App extends Component {
   render() {
@@ -56,22 +55,18 @@ class App extends Component {
           
           <h1>Meeting cost calculator</h1>
           
-          <InputField addButton={this.addEntry} />
+          <InputField />
           
           <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
             <Button text={"Start meeting"} />
           </Col>
           
           <SumFields />
-          {<DisplayEntries />}    
+          <DisplayEntries />   
 
       
       </div>
     );
-  }
-  addEntry = () => {
-    console.log("Add button press registred")
-    window.open("https://www.netlight.com/", "_blank")
   }
 
 }

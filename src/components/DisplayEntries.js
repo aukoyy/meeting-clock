@@ -15,7 +15,7 @@ export default class DisplayEntries extends React.Component {
     renderEntries = () => {
         let entries = []
         for(let i=0;i<10;i++) {
-            entries.push(<li>Entrie number {i}</li>)
+            entries.push(<li>Entry number {i}</li>)
         }
         return (
             <ul>{entries}</ul>
