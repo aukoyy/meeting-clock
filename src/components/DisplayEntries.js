@@ -1,24 +1,37 @@
-// In this component we render all the entries
-
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default class DisplayEntries extends React.Component {
+import { getSalaries } from '../actions/salaryActions'
+
+class DisplayEntries extends React.Component {
+    componentWillMount() {
+        this.props.getSalaries();
+    }
     render () {
         return (
             <div>
+                
                 <div>
-                    {this.renderEntries()}
+                    {/* {this.renderEntries()} */}
+                    <h1>|=> {this.props.salaries } </h1>
                 </div>
             </div>
         )
     }
     renderEntries = () => {
-        let entries = []
-        for(let i=0;i<10;i++) {
-            entries.push(<li>Entry number {i}</li>)
-        }
+        const salaryEntries = this.props.salaries.map(salary => (
+            <div>
+                <li>{salary}</li>
+            </div>
+        ))
         return (
-            <ul>{entries}</ul>
+            <ul>{salaryEntries}</ul>
         )
     }
 }
+
+const mapStateToProps = state => ({
+    salaries: state.salaries.salaries
+})
+
+export default connect(mapStateToProps, { getSalaries })(DisplayEntries);
