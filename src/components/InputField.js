@@ -51,15 +51,18 @@ export default class InputField extends Component {
 
     onSubmit(e) {
         // this gives not an array but something derpy...
+        // må kopiere, er kanskje bare en peker
+        // man mister array funksjonen. kan fikses med 
+        // for loop? map?
         e.preventDefault();
-        console.log(this.state.rateList.push(3))
-        let oldRateList = this.state.rateList;
-        console.log('oldRateList: ' + oldRateList);
+        let oldRateList = this.state.rateList.slice(0);
         let newSalary = parseInt(this.state.hourlyRate);
-        console.log('newSalary: ' + newSalary)
         let newRateList = oldRateList.push(newSalary); 
-        console.log('newRateList: ' + newRateList);
-        
         //this.setState({ rateList: newRateList })
+        
+        console.log(this.state.rateList)
+        console.log('oldRateList: ' + oldRateList);
+        console.log('newSalary: ' + newSalary)
+        console.log('newRateList: ' + newRateList);
     };
 }

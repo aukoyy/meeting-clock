@@ -1,7 +1,8 @@
 import { GET_SALARIES, NEW_SALARY } from '../actions/types';
 
 const initialState = {
-    salaries: [200, 300, 250]
+    salaryArray: [200, 300, 250],
+    salarySum: 0,
 }
 
 export default function(state = initialState, action) {
@@ -9,7 +10,7 @@ export default function(state = initialState, action) {
         case GET_SALARIES:
             return {
                 ...state,
-                salaries: action.payload
+                salaryArray: action.payload
             }
         // case NEW_SALARY:
         //     return {

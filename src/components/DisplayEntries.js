@@ -12,8 +12,8 @@ class DisplayEntries extends React.Component {
             <div>
                 
                 <div>
-                    {/* {this.renderEntries()} */}
-                    <h1>|=> {this.props.salaries } </h1>
+                    {this.renderEntries()}
+                    {/* <h1>|=> {this.props.salaries[1] + this.props.salaries[1]} </h1> */}
                 </div>
             </div>
         )
@@ -31,7 +31,9 @@ class DisplayEntries extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    salaries: state.salaries.salaries
+    // salaries references the rootReducer index, salaryArray references the
+    // array defined in salaryReducer    
+    salaries: state.salaries.salaryArray
 })
 
 export default connect(mapStateToProps, { getSalaries })(DisplayEntries);
