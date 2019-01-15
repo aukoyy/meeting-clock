@@ -1,16 +1,24 @@
-import { GET_SALARIES, NEW_SALARY } from './types';
+import { GET_SALARIES, NEW_SALARY, SET_SALARYSUM, TOGGLE_TIMER } from './types';
 
 import store from '../store';
 
 export const getSalaries = () => ({
   type: GET_SALARIES,
-  // payload: 'salaryArray'
   payload: store.getState().salaries.salaryArray,
   // WOHOOOOOOOOO!
 })
 
-// export const addSalary = amount => ({
-//   type: 'ADD_SALARY',
-//   id: nextSalarayId++,
-//   payload: amount
-// })
+export const addSalary = amount => ({
+  type: NEW_SALARY,
+  payload: amount,
+})
+
+export const setSalarySum = () => ({
+  type: SET_SALARYSUM,
+  payload: 200,
+})
+
+export const toggleTimer = () => ({
+  type: TOGGLE_TIMER,
+  payload: !store.getState().timerShouldRun,
+})

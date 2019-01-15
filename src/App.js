@@ -60,9 +60,7 @@ class App extends Component {
             
             <InputField />
             
-            <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
-              <Button text={"Start meeting"} />
-            </Col>
+            
             
             <SumFields />
             <DisplayEntries />   

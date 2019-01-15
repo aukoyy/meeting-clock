@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Col , Input} from '@skillsets/react-components';
+import { Button, Col } from '@skillsets/react-components';
+import { connect } from 'react-redux';
 
-export default class InputField extends Component {
+import { addSalary } from '../actions/salaryActions';
+import { setSalarySum } from '../actions/salaryActions';
+
+class InputField extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -39,6 +43,12 @@ export default class InputField extends Component {
                             />
                         </Col>
                     </form>
+                    <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
+                        <Button 
+                            text={"Start meeting"} 
+                            type='submit'
+                        />
+                    </Col>
                 
                 </Col>
             </div>
@@ -50,19 +60,30 @@ export default class InputField extends Component {
     }
 
     onSubmit(e) {
+        e.preventDefault();
+        // this.props.addSalary(242);
+        this.props.setSalarySum();
+        console.log('onSubmit')
+
+
         // this gives not an array but something derpy...
         // må kopiere, er kanskje bare en peker
         // man mister array funksjonen. kan fikses med 
         // for loop? map?
-        e.preventDefault();
-        let oldRateList = this.state.rateList.slice(0);
-        let newSalary = parseInt(this.state.hourlyRate);
-        let newRateList = oldRateList.push(newSalary); 
+        // let oldRateList = this.state.rateList.slice(0);
+        // let newSalary = parseInt(this.state.hourlyRate);
+        // let newRateList = oldRateList.push(newSalary); 
         //this.setState({ rateList: newRateList })
         
-        console.log(this.state.rateList)
-        console.log('oldRateList: ' + oldRateList);
-        console.log('newSalary: ' + newSalary)
-        console.log('newRateList: ' + newRateList);
+        // console.log(this.state.rateList)
+        // console.log('oldRateList: ' + oldRateList);
+        // console.log('newSalary: ' + newSalary)
+        // console.log('newRateList: ' + newRateList);
     };
 }
+
+const mapStateToProps = (state) => ({
+    salaries: state.salaries.salaryArray
+})
+
+export default connect(mapStateToProps, { addSalary, setSalarySum })(InputField);

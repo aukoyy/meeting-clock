@@ -29,4 +29,3 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, { getSalaries })(SumFields);
-// export default connect(mapStateToProps, { getSalaries })(DisplayEntries);

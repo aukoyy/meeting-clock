@@ -13,7 +13,6 @@ class DisplayEntries extends React.Component {
                 
                 <div>
                     {this.renderEntries()}
-                    {/* <h1>|=> {this.props.salaries[1] + this.props.salaries[1]} </h1> */}
                 </div>
             </div>
         )
