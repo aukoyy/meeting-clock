@@ -1,8 +1,9 @@
-import { GET_SALARIES, NEW_SALARY, SET_SALARYSUM } from '../actions/types';
+import { GET_SALARIES, NEW_SALARY, SET_SALARYSUM, TOGGLE_TIMER } from '../actions/types';
 
 const initialState = {
-    salaryArray: [200, 300, 150, 180],
+    salaryArray: [200, 220],
     salarySum: 0,
+    timerShouldRun: false,
 }
 
 export default function(state = initialState, action) {
@@ -13,14 +14,19 @@ export default function(state = initialState, action) {
                 salaryArray: action.payload
             }
         case NEW_SALARY:
-            return [
-                action.NEW_SALARY,
-                ...state.salaryArray.push(action.payload)
-            ]
+            return {
+                ...state,
+                salaryArray: action.payload
+            }
         case SET_SALARYSUM:
             return {
                 ...state,
-                salarySum: 400,
+                salarySum: action.payload,
+            }
+        case TOGGLE_TIMER:
+            return {
+                ...state,
+                timerShouldRun: action.payload
             }
         default:
             return state;

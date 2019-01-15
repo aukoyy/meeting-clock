@@ -15,7 +15,7 @@ export const addSalary = amount => ({
 
 export const setSalarySum = () => ({
   type: SET_SALARYSUM,
-  payload: 200,
+  payload: store.getState().salaries.SalaryArray.reduce((sum, salary) => sum + salary),
 })
 
 export const toggleTimer = () => ({

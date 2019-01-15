@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import { Button, Col } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
-import { addSalary } from '../actions/salaryActions';
-import { setSalarySum } from '../actions/salaryActions';
+import { addSalary, setSalarySum, toggleTimer } from '../actions/salaryActions';
 
 class InputField extends Component {
     constructor(props) {
         super(props)
         this.state = {
             hourlyRate: -1,
-            rateList: [200, 250, 300]
         };
 
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+        this.onTimerToggle = this.onTimerToggle.bind(this)
     }
 
     render() {
@@ -47,6 +46,7 @@ class InputField extends Component {
                         <Button 
                             text={"Start meeting"} 
                             type='submit'
+                            onClick={ this.onTimerToggle }
                         />
                     </Col>
                 
@@ -60,30 +60,17 @@ class InputField extends Component {
     }
 
     onSubmit(e) {
-        e.preventDefault();
-        // this.props.addSalary(242);
-        this.props.setSalarySum();
-        console.log('onSubmit')
-
-
-        // this gives not an array but something derpy...
-        // må kopiere, er kanskje bare en peker
-        // man mister array funksjonen. kan fikses med 
-        // for loop? map?
-        // let oldRateList = this.state.rateList.slice(0);
-        // let newSalary = parseInt(this.state.hourlyRate);
-        // let newRateList = oldRateList.push(newSalary); 
-        //this.setState({ rateList: newRateList })
-        
-        // console.log(this.state.rateList)
-        // console.log('oldRateList: ' + oldRateList);
-        // console.log('newSalary: ' + newSalary)
-        // console.log('newRateList: ' + newRateList);
+        e.preventDefault();  
+        this.props.addSalary(this.props.salaries.concat([parseInt(this.state.hourlyRate)]));
     };
+
+    onTimerToggle(e) {
+        this.props.toggleTimer();
+    }
 }
 
 const mapStateToProps = (state) => ({
     salaries: state.salaries.salaryArray
 })
 
-export default connect(mapStateToProps, { addSalary, setSalarySum })(InputField);
+export default connect(mapStateToProps, { addSalary, setSalarySum, toggleTimer })(InputField);
