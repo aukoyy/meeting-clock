@@ -21,7 +21,12 @@ class App extends Component {
             
             <InputField />
             
-                       
+            <Col>
+              <h1>Heiheihei</h1>
+              <p>Crazy</p>
+              <p></p>
+              <p></p>
+            </Col>
 
             <SumFields />
             <DisplayEntries />   
