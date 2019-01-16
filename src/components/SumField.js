@@ -2,73 +2,71 @@ import React from 'react';
 //import { Card } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
-import { getSalaries } from '../actions/salaryActions';
+import { getSalaries, setSalarySum, getSalarySum } from '../actions/salaryActions';
+import { getElapsedTime, getTimerShouldRun, incrementTimer } from '../actions/timerActions';
 
 class SumFields extends React.Component {
-    componentDidMount() {
+  // Hvorfor må det stå props her?
+  constructor(props){
+    super(props)
+    this.state = {
+      time: 0,
+    }
+    setInterval(() => this.incrementTimer(), 1000)
+  }  
+  componentDidMount() {
         this.computeSalarySum();
+        console.log(this.props.timerShouldRun)
     }
     render () {
         return (
             <div>
-                <h2>Time Elapsed:</h2>
-                <h1>Total Meeting Cost: {this.computeSalarySum()}</h1>
+                <h1>Meeting cost: { this.costPerSecond() }</h1>
+                <h3>Elapsed time: { this.renderElapsedTime() } seconds</h3>
+                <h3>Total per hour cost: {this.computeSalarySum()}</h3>
                 
             </div>
         )
     }
     computeSalarySum = () => {
+      const salarySum = this.props.salaries.reduce((sum, salary) => sum + salary);
+      this.props.setSalarySum(salarySum);
         return(
-            this.props.salaries.reduce((sum, salary) => sum + salary)
+            salarySum
         );
     };
-
-    
-}
-
-const mapStateToProps = (state) => ({
-    salaries: state.salaries.salaryArray
-})
-
-export default connect(mapStateToProps, { getSalaries })(SumFields);
-
-class Timer extends React.Component{
-    constructor(){
-      super()
-      this.state = {
-        time: 0,
-      }
-      setInterval(() => this.incrementTimer(), 1000)
-  
-    }
     incrementTimer(){
-      if(!this.props.shouldTimerRun) return
+      if(!this.props.timerShouldRun) return
       const newTime = this.state.time+1
       this.setState({
         time: newTime
       })
-      this.props.onTimeChange(newTime)
+      this.props.incrementTimer();
     }
-    render(){
-      return(
-        <div>
-          <p>{this.state.time}</p>
-        </div>
+    renderElapsedTime() {
+      return (
+        this.props.elapsedTime
       )
     }
-  }
-  
-  class MoneyCounter extends React.Component{
-  costPerSecondCalculator(){
-      const costPerSecond = this.props.sumOfSalaries / 60 / 60
-      return (costPerSecond * this.props.time).toFixed(2)
-  }
-    render(){
-      return(
-        <div>
-            <h1>{this.costPerSecondCalculator()}</h1>
-  
-        </div>
-      )
+    costPerSecond = () => {
+      const costPerSecond = this.props.salarySum / 60 / 60;
+      console.log(costPerSecond);
+      return ((costPerSecond * this.props.elapsedTime).toFixed(2))
     }
-  }
+}
+
+const mapStateToProps = (state) => ({
+    salaries: state.salaries.salaryArray,
+    salarySum: state.salaries.salarySum,
+    elapsedTime: state.timer.elapsedTime,
+    timerShouldRun: state.timer.timerShouldRun,
+})
+
+export default connect(mapStateToProps, { 
+  getSalaries, 
+  setSalarySum,
+  getSalarySum,
+  getElapsedTime, 
+  getTimerShouldRun,
+  incrementTimer,
+ })(SumFields);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Button, Col } from '@skillsets/react-components';
+import { Col } from '@skillsets/react-components';
 import { Provider } from 'react-redux';
 
 import store from './store';
@@ -21,13 +21,6 @@ class App extends Component {
             
             <InputField />
             
-            <Col>
-              <h1>Heiheihei</h1>
-              <p>Crazy</p>
-              <p></p>
-              <p></p>
-            </Col>
-
             <SumFields />
             <DisplayEntries />   
 

@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Button, Col } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
-import { addSalary, setSalarySum, toggleTimer } from '../actions/salaryActions';
+import { addSalary, setSalarySum } from '../actions/salaryActions';
+import { toggleTimer } from '../actions/timerActions';
+
 
 class InputField extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            hourlyRate: -1,
+            hourlyRate: 200,
         };
 
         this.onChange = this.onChange.bind(this)
@@ -22,7 +24,6 @@ class InputField extends Component {
                 <h3>Input your employees hourly rates one by one and press "Start meeting"</h3>
                 
                 <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
-                    <h1>Inputs</h1>
                     <form onSubmit={ this.onSubmit }>
                         <Col>
                             <label>Hourly rate</label><br />

@@ -1,4 +1,4 @@
-import { GET_SALARIES, NEW_SALARY, SET_SALARYSUM, TOGGLE_TIMER } from './types';
+import { GET_SALARIES, NEW_SALARY, SET_SALARYSUM, GET_SALARYSUM } from './types';
 
 import store from '../store';
 
@@ -13,12 +13,12 @@ export const addSalary = amount => ({
   payload: amount,
 })
 
-export const setSalarySum = () => ({
+export const setSalarySum = (salarySum) => ({
   type: SET_SALARYSUM,
-  payload: store.getState().salaries.SalaryArray.reduce((sum, salary) => sum + salary),
+  payload: salarySum,
 })
 
-export const toggleTimer = () => ({
-  type: TOGGLE_TIMER,
-  payload: !store.getState().timerShouldRun,
+export const getSalarySum = () => ({
+  type: GET_SALARYSUM,
+  payload: store.getState().salaries.salarySum,
 })

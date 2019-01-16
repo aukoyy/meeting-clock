@@ -20,7 +20,7 @@ class DisplayEntries extends React.Component {
     renderEntries = () => {
         const salaryEntries = this.props.salaries.map(salary => (
             <div>
-                <li>{salary}</li>
+                Participant #1: {salary}
             </div>
         ))
         return (
