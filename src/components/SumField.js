@@ -1,5 +1,4 @@
 import React from 'react';
-//import { Card } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
 import { getSalaries, setSalarySum, getSalarySum } from '../actions/salaryActions';
@@ -23,7 +22,7 @@ class SumFields extends React.Component {
             <div>
                 <h1>Meeting cost: { this.costPerSecond() }</h1>
                 <h3>Elapsed time: { this.renderElapsedTime() } seconds</h3>
-                <h3>Total per hour cost: {this.computeSalarySum()}</h3>
+                <h3>Cost per hour: {this.computeSalarySum()}</h3>
                 
             </div>
         )

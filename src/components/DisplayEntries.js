@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Card, Col } from '@skillsets/react-components';
 
 import { getSalaries } from '../actions/salaryActions'
 
@@ -9,22 +10,27 @@ class DisplayEntries extends React.Component {
     }
     render () {
         return (
-            <div>
-                
-                <div>
-                    {this.renderEntries()}
-                </div>
-            </div>
+            <Col horizontalAlignment={"Center"}>
+                {this.renderEntries()}
+            </Col>
         )
     }
     renderEntries = () => {
         const salaryEntries = this.props.salaries.map(salary => (
-            <div>
-                Participant #1: {salary}
-            </div>
+            <Col marginTop={'margin-top-medium'}>
+                <Card 
+                    cardType={'card-flat'} 
+                    padding={'padding-small'} 
+                    horizontalAlignment={"Center"}
+                >
+                    Participant: {salary}
+                </Card>
+            </Col>
         ))
         return (
-            <ul>{salaryEntries}</ul>
+            <Col lg={5} horizontalAlignment={'Center'}>
+                <b>{salaryEntries}</b>
+            </Col>
         )
     }
 }

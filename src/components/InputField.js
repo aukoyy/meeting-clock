@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col } from '@skillsets/react-components';
+import { Button, Col, Input, Row, Form } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
 import { addSalary, setSalarySum } from '../actions/salaryActions';
@@ -21,13 +21,12 @@ class InputField extends Component {
     render() {
         return (
             <div>
-                <h3>Input your employees hourly rates one by one and press "Start meeting"</h3>
+                <h3>Input your own and your coworkers hourly rates one by one and press "Start meeting"</h3>
                 
                 <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
                     <form onSubmit={ this.onSubmit }>
                         <Col>
-                            <label>Hourly rate</label><br />
-                            <input 
+                            <Input 
                                 text={"Hourly rate"} 
                                 type='text'
                                 name='hourlyRate'
@@ -35,22 +34,24 @@ class InputField extends Component {
                                 onChange={ this.onChange }
                             />
                         </Col>
-                        <Col horizontalAlignment={"Center"}>
+                            
+                        <Row horizontalAlignment={"Center"}>
                             <Button 
                                 text={"Add"} 
                                 type='submit'
                                 marginTop={"margin-top-small"} 
                             />
-                        </Col>
+                            {/* FIXME: Pressing the start button
+                                also fires off submit */}
+                            <Button 
+                                text={'Start meeting'} 
+                                type='button'
+                                onClick={ this.onTimerToggle }
+                                marginTop={'margin-top-small'}
+                                marginLeft={'margin-left-small'}
+                                />
+                        </Row>
                     </form>
-                    <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
-                        <Button 
-                            text={"Start meeting"} 
-                            type='submit'
-                            onClick={ this.onTimerToggle }
-                        />
-                    </Col>
-                
                 </Col>
             </div>
         )

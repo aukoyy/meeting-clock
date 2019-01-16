@@ -10,6 +10,7 @@ export const getTimerShouldRun = () => ({
 
 export const toggleTimer = () => ({
     type: TOGGLE_TIMER,
+    // TODO: Fix ! so toggle works both ways
     payload: !store.getState().timerShouldRun,
   })
 
