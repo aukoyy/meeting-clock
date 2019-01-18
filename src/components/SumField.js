@@ -29,7 +29,7 @@ class SumFields extends React.Component {
       const salarySum = this.props.salaries.reduce((sum, salary) => sum + salary);
       this.props.setSalarySum(salarySum);
         return(
-            salarySum
+            this.props.salarySum
         );
     };
     incrementTimer(){

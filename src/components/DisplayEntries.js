@@ -17,7 +17,7 @@ class DisplayEntries extends React.Component {
     }
     renderEntries = () => {
         const salaryEntries = this.props.salaries.map(salary => (
-            <Col marginTop={'margin-top-medium'}>
+            <Col marginTop={'margin-top-tiny'}>
                 <Card 
                     cardType={'card-flat'} 
                     padding={'padding-small'} 

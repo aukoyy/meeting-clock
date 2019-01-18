@@ -17,7 +17,12 @@ class App extends Component {
       <Provider store={store}>
         <Col className="App" horizontalAlignment={'Center'}>
             
-            <Text fontStyle={0}>Meeting cost calculator</Text>
+            <Text 
+              fontStyle={0}
+              marginTop={'margin-top-large'}
+            >
+              Meeting cost calculator
+            </Text>
             
             <InputField />
             

@@ -21,7 +21,12 @@ class InputField extends Component {
     render() {
         return (
             <div>
-                <Text fontStyle={2}>Input your own and your coworkers hourly rates one by one and press "Start meeting"</Text>
+                <Text 
+                    fontStyle={2}
+                    marginTop={'margin-top-small'}
+                >
+                    Input your own and your coworkers hourly rates one by one and press "Start meeting"
+                </Text>
                 
                 <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
                     <Form sm={11} md={6} onSubmit={ this.onSubmit }>
