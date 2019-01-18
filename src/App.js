@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Col } from '@skillsets/react-components';
+import { Col, Text } from '@skillsets/react-components';
 import { Provider } from 'react-redux';
 
 import store from './store';
@@ -15,9 +15,9 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
+        <Col className="App" horizontalAlignment={'Center'}>
             
-            <h1>Meeting cost calculator</h1>
+            <Text fontStyle={0}>Meeting cost calculator</Text>
             
             <InputField />
             
@@ -25,7 +25,7 @@ class App extends Component {
             <DisplayEntries />   
 
         
-        </div>
+        </Col>
       </Provider>
     );
   }

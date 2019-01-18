@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Input, Row, Form } from '@skillsets/react-components';
+import { Button, Col, TextInput, Form, Text } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
 import { addSalary, setSalarySum } from '../actions/salaryActions';
@@ -10,7 +10,7 @@ class InputField extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            hourlyRate: 200,
+            hourlyRate: '',
         };
 
         this.onChange = this.onChange.bind(this)
@@ -21,49 +21,41 @@ class InputField extends Component {
     render() {
         return (
             <div>
-                <h3>Input your own and your coworkers hourly rates one by one and press "Start meeting"</h3>
+                <Text fontStyle={2}>Input your own and your coworkers hourly rates one by one and press "Start meeting"</Text>
                 
                 <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
-                    <form onSubmit={ this.onSubmit }>
+                    <Form sm={11} md={6} onSubmit={ this.onSubmit }>
                         <Col>
-                            <Input 
-                                text={"Hourly rate"} 
-                                type='text'
-                                name='hourlyRate'
+                            <TextInput 
+                                label='Salary'
                                 value={ this.state.hourlyRate }
-                                onChange={ this.onChange }
+                                onValueChanged={ this.onChange }
                             />
                         </Col>
                             
-                        <Row horizontalAlignment={"Center"}>
-                            <Button 
-                                text={"Add"} 
-                                type='submit'
-                                marginTop={"margin-top-small"} 
-                            />
-                            {/* FIXME: Pressing the start button
-                                also fires off submit */}
-                            <Button 
-                                text={'Start meeting'} 
-                                type='button'
-                                onClick={ this.onTimerToggle }
-                                marginTop={'margin-top-small'}
-                                marginLeft={'margin-left-small'}
-                                />
-                        </Row>
-                    </form>
+                        <Col horizontalAlignment={"Center"} marginTop={"margin-top-small"} >
+                            <Button text="Add" />
+                        </Col>
+                    </Form>
+                    <Button 
+                        text={'Start meeting'} 
+                        type='button'
+                        onClick={ this.onTimerToggle }
+                        marginTop={'margin-top-small'}
+                    />
                 </Col>
             </div>
         )
     }
 
-    onChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
-    }
+    onChange(rate) {
+        // this.setState({ [e.target.name]: e.target.value });
+        this.setState({ hourlyRate: rate });
+    };
 
-    onSubmit(e) {
-        e.preventDefault();  
-        this.props.addSalary(this.props.salaries.concat([parseInt(this.state.hourlyRate)]));
+    onSubmit(e) { 
+        // e.preventDefault();  
+        this.props.addSalary(this.props.salaries.concat([Number(this.state.hourlyRate)]));
     };
 
     onTimerToggle(e) {

@@ -5,7 +5,6 @@ import { getSalaries, setSalarySum, getSalarySum } from '../actions/salaryAction
 import { getElapsedTime, getTimerShouldRun, incrementTimer } from '../actions/timerActions';
 
 class SumFields extends React.Component {
-  // Hvorfor må det stå props her?
   constructor(props){
     super(props)
     this.state = {
@@ -15,7 +14,6 @@ class SumFields extends React.Component {
   }  
   componentDidMount() {
         this.computeSalarySum();
-        console.log(this.props.timerShouldRun)
     }
     render () {
         return (
@@ -49,7 +47,6 @@ class SumFields extends React.Component {
     }
     costPerSecond = () => {
       const costPerSecond = this.props.salarySum / 60 / 60;
-      console.log(costPerSecond);
       return ((costPerSecond * this.props.elapsedTime).toFixed(2))
     }
 }
