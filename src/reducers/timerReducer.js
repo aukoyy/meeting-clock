@@ -1,4 +1,4 @@
-import { TOGGLE_TIMER } from '../actions/types';
+import { TOGGLE_TIMER, INCREMENT_TIMER } from '../actions/types';
 
 const initialState = ({
     timerShouldRun: false,
@@ -13,6 +13,11 @@ export default function(state = initialState, action) {
                 ...state,
                 timerShouldRun: !state.timerShouldRun
             } 
+        case INCREMENT_TIMER:
+            return {
+                ...state,
+                elapsedTime: state.elapsedTime+1
+            }
         default:
             return state
     }
