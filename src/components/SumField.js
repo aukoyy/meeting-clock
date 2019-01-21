@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setSalarySum } from '../actions/salaryActions';
+import { updateSalarySum } from '../actions/salaryActions';
 import { incrementTimer } from '../actions/timerActions';
 
 class SumFields extends React.Component {
@@ -24,7 +24,7 @@ class SumFields extends React.Component {
   }
   computeSalarySum = () => {
     const salarySum = this.props.salaries.reduce((sum, salary) => sum + salary);
-    this.props.setSalarySum(salarySum);
+    this.props.updateSalarySum(salarySum);
       return(
           this.props.salarySum
       );
@@ -56,6 +56,6 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, { 
-  setSalarySum,
+  updateSalarySum,
   incrementTimer,
  })(SumFields);

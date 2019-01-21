@@ -1,4 +1,4 @@
-import { NEW_SALARY, SET_SALARYSUM } from '../actions/types';
+import { NEW_SALARY, UPDATE_SALARYSUM } from '../actions/types';
 
 const initialState = {
     salaryArray: [200, 220],
@@ -12,7 +12,7 @@ export default function(state = initialState, action) {
                 ...state,
                 salaryArray: action.payload,
             }
-        case SET_SALARYSUM:
+        case UPDATE_SALARYSUM:
             return {
                 ...state,
                 salarySum: action.payload,

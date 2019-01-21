@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Col, TextInput, Form, Text } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
-import { addSalary, setSalarySum } from '../actions/salaryActions';
+import { addSalary } from '../actions/salaryActions';
 import { toggleTimer } from '../actions/timerActions';
 
 
@@ -72,4 +72,4 @@ const mapStateToProps = (state) => ({
     salaries: state.salaries.salaryArray
 })
 
-export default connect(mapStateToProps, { addSalary, setSalarySum, toggleTimer })(InputField);
+export default connect(mapStateToProps, { addSalary, toggleTimer })(InputField);
