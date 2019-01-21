@@ -12,10 +12,6 @@ class InputField extends Component {
         this.state = {
             hourlyRate: '',
         };
-
-        this.onChange = this.onChange.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
-        this.onTimerToggle = this.onTimerToggle.bind(this)
     }
 
     render() {
@@ -42,23 +38,24 @@ class InputField extends Component {
                             <Button text="Add" />
                         </Col>
                     </Form>
-                            { this.renderToggleTimerButton() }
+                    { this.renderToggleTimerButton() }
                 </Col>
             </div>
         )
     }
 
-    onChange(rate) {
+    onChange = (rate) => {
         // this.setState({ [e.target.name]: e.target.value });
         this.setState({ hourlyRate: rate });
     };
 
-    onSubmit(e) { 
-        // e.preventDefault();  
+    onSubmit = (e) => { 
+        // e.preventDefault();
+        // TODO: Sanatize input so calculation can not get corrupted
         this.props.addSalary(this.props.salaries.concat([Number(this.state.hourlyRate)]));
     };
 
-    onTimerToggle(e) {
+    onTimerToggle = (e) => {
         this.props.toggleTimer();
     }
     renderToggleTimerButton = () => {

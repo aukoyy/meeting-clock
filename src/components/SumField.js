@@ -18,7 +18,8 @@ class SumFields extends React.Component {
       )
   }
   computeSalarySum = () => {
-    if(this.props.salaries.length === 0) return 0
+    const salaryArrayIsEmpty = this.props.salaries.length === 0;
+    if(salaryArrayIsEmpty) return 0
     const salarySum = this.props.salaries.reduce((sum, salary) => sum + salary);
     this.props.updateSalarySum(salarySum);
       return(
