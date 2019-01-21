@@ -13,7 +13,7 @@ class SumFields extends React.Component {
           <div>
               <h1>Meeting cost: { this.costPerSecond() }</h1>
               <h3>Elapsed time: { this.renderElapsedTime() } seconds</h3>
-              <h3>Cost per hour: {this.computeSalarySum()}</h3>
+              <h3>Cost per hour: { this.computeSalarySum() }</h3>
           </div>
       )
   }
@@ -41,7 +41,7 @@ class SumFields extends React.Component {
   /* 
     TODO: can be made more readable like so. 
     Not implementet because it returned NaN
-    
+
     calculateCostPerSecond = () => {
     const SECONDS_PER_HOUR = 60 * 60
     const costPerSecond = this.props.hourlySalarySum / SECONDS_PER_HOUR; 

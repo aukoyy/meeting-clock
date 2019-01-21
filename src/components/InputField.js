@@ -38,11 +38,11 @@ class InputField extends Component {
                             />
                         </Col>
                             
-                        <Col horizontalAlignment={HorizontalAlignment.CENTER} marginTop={MarginTop.SMALL} >
+                        <Col marginTop={MarginTop.SMALL} horizontalAlignment={HorizontalAlignment.CENTER}>
                             <Button text="Add" />
                         </Col>
                     </Form>
-                    { this.renderToggleTimerButton() }
+                            { this.renderToggleTimerButton() }
                 </Col>
             </div>
         )
@@ -67,7 +67,7 @@ class InputField extends Component {
                 <Button 
                     text={'Start meeting'} 
                     onClick={ this.onTimerToggle }
-                    marginTop={MarginTop.SMALL}
+                    marginTop={MarginTop.TINY}
                 />
             )
         } else {
@@ -75,7 +75,7 @@ class InputField extends Component {
                 <Button 
                     text={'Pause meeting'} 
                     onClick={ this.onTimerToggle }
-                    marginTop={MarginTop.SMALL}
+                    marginTop={MarginTop.TINY}
                 />
             )
         }
