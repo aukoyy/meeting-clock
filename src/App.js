@@ -9,8 +9,6 @@ import DisplayEntries from './components/DisplayEntries';
 import SumFields from './components/SumField';
 
 
-
-
 class App extends Component {
   render() {
     return (

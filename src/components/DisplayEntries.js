@@ -2,12 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card, Col } from '@skillsets/react-components';
 
-import { getSalaries } from '../actions/salaryActions'
-
 class DisplayEntries extends React.Component {
-    componentWillMount() {
-        this.props.getSalaries();
-    }
     render () {
         return (
             <Col horizontalAlignment={"Center"}>
@@ -36,9 +31,9 @@ class DisplayEntries extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    // salaries references the rootReducer index, salaryArray references the
-    // array defined in salaryReducer    
+    /* salaries references the rootReducer index, salaryArray references the
+    array defined in salaryReducer     */
     salaries: state.salaries.salaryArray
 })
 
-export default connect(mapStateToProps, { getSalaries })(DisplayEntries);
+export default connect(mapStateToProps, {})(DisplayEntries);
