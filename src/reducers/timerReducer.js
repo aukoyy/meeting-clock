@@ -1,5 +1,6 @@
 import { TOGGLE_TIMER, INCREMENT_TIMER } from '../actions/types';
 
+
 const initialState = ({
     timerShouldRun: false,
     elapsedTime: 0,

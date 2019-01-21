@@ -1,7 +1,7 @@
 import { NEW_SALARY, UPDATE_SALARYSUM } from '../actions/types';
 
 const initialState = {
-    salaryArray: [200, 220],
+    salaryArray: [],
     salarySum: 0,
 }
 
