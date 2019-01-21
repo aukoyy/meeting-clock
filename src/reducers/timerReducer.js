@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
         case TOGGLE_TIMER:
             return {
                 ...state,
-                timerShouldRun: action.payload
+                timerShouldRun: !state.timerShouldRun
             } 
         default:
             return state
