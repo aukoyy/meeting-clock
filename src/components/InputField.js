@@ -42,12 +42,7 @@ class InputField extends Component {
                             <Button text="Add" />
                         </Col>
                     </Form>
-                    <Button 
-                        text={'Start meeting'} 
-                        type='button'
-                        onClick={ this.onTimerToggle }
-                        marginTop={MarginTop.SMALL}
-                    />
+                    { this.renderToggleTimerButton() }
                 </Col>
             </div>
         )
@@ -66,10 +61,30 @@ class InputField extends Component {
     onTimerToggle(e) {
         this.props.toggleTimer();
     }
+    renderToggleTimerButton = () => {
+        if(!this.props.timerShouldRun) {
+            return (
+                <Button 
+                    text={'Start meeting'} 
+                    onClick={ this.onTimerToggle }
+                    marginTop={MarginTop.SMALL}
+                />
+            )
+        } else {
+            return (
+                <Button 
+                    text={'Pause meeting'} 
+                    onClick={ this.onTimerToggle }
+                    marginTop={MarginTop.SMALL}
+                />
+            )
+        }
+    }
 }
 
 const mapStateToProps = (state) => ({
-    salaries: state.salaries.salaryArray
+    salaries: state.salaries.salaryArray,
+    timerShouldRun: state.timer.timerShouldRun,
 })
 
 export default connect(mapStateToProps, { addSalary, toggleTimer })(InputField);

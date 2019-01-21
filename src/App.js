@@ -27,12 +27,10 @@ class App extends Component {
             <SumFields />
             <DisplayEntries />   
 
-        
         </Col>
       </Provider>
     );
   }
-
 }
 
 export default App;

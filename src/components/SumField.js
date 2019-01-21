@@ -39,7 +39,9 @@ class SumFields extends React.Component {
     return ((costPerSecond * this.props.elapsedTime).toFixed(2))
   }
   /* 
-    TODO: can be made more readable like so. Not implementet because it returned NaN
+    TODO: can be made more readable like so. 
+    Not implementet because it returned NaN
+    
     calculateCostPerSecond = () => {
     const SECONDS_PER_HOUR = 60 * 60
     const costPerSecond = this.props.hourlySalarySum / SECONDS_PER_HOUR; 
