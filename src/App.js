@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Col, Text, MarginTop, HorizontalAlignment } from '@skillsets/react-components';
+import { Col, Text, MarginTop, HorizontalAlignment, FontStyle } from '@skillsets/react-components';
 import { Provider } from 'react-redux';
 
 import store from './store';
@@ -16,7 +16,7 @@ class App extends Component {
         <Col className="App" horizontalAlignment={HorizontalAlignment.CENTER}>
             
             <Text 
-              fontStyle={0}
+              fontStyle={FontStyle.TITLE}
               marginTop={MarginTop.LARGE}
             >
               Meeting cost calculator
