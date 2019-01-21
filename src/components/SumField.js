@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Text, FontStyle, MarginTop, Col, HorizontalAlignment, Color } from '@skillsets/react-components';
 
 import { updateSalarySum } from '../actions/salaryActions';
 import { incrementTimer } from '../actions/timerActions';
@@ -10,14 +11,35 @@ class SumFields extends React.Component {
   }
   render () {
       return (
-          <div>
-              <h1>Meeting cost: { this.costPerSecond() }</h1>
-              <h3>Elapsed time: { this.renderElapsedTime() } seconds</h3>
-              <h3>Cost per hour: { this.computeSalarySum() }</h3>
-          </div>
+          <Col horizontalAlignment={HorizontalAlignment.CENTER}>
+              <Text
+                fontStyle={FontStyle.COMPONENT_TITLE}
+                marginTop={MarginTop.LARGE}
+              >
+                Meeting cost: { this.calculateCostPerSecond() }
+              </Text>
+
+              <Text
+                fontStyle={FontStyle.NORMAL}
+                marginTop={MarginTop.SMALL}
+              >
+                Elapsed time: { this.renderElapsedTime() } seconds
+              </Text>
+
+              <Text
+                fontStyle={FontStyle.NORMAL}
+                marginTop={MarginTop.SMALL}
+              >
+                Cost per hour: { this.computeSalarySum() }
+              </Text>
+              
+              
+          </Col>
       )
   }
   computeSalarySum = () => {
+    // TODO: this is slightly confusing. there should be one function for compute and
+    // another for render.
     const salaryArrayIsEmpty = this.props.salaries.length === 0;
     if(salaryArrayIsEmpty) return 0
     const salarySum = this.props.salaries.reduce((sum, salary) => sum + salary);
@@ -35,7 +57,7 @@ class SumFields extends React.Component {
       this.props.elapsedTime
     )
   }
-  costPerSecond = () => {
+  calculateCostPerSecond = () => {
     const costPerSecond = this.props.salarySum / 60 / 60;
     return ((costPerSecond * this.props.elapsedTime).toFixed(2))
   }
