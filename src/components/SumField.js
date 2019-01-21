@@ -18,7 +18,6 @@ class SumFields extends React.Component {
               <h1>Meeting cost: { this.costPerSecond() }</h1>
               <h3>Elapsed time: { this.renderElapsedTime() } seconds</h3>
               <h3>Cost per hour: {this.computeSalarySum()}</h3>
-              
           </div>
       )
   }

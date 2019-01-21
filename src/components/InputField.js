@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, TextInput, Form, Text } from '@skillsets/react-components';
+import { Button, Col, TextInput, Form, Text, MarginTop, HorizontalAlignment } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
 import { addSalary } from '../actions/salaryActions';
@@ -23,12 +23,12 @@ class InputField extends Component {
             <div>
                 <Text 
                     fontStyle={2}
-                    marginTop={'margin-top-small'}
+                    marginTop={MarginTop.SMALL}
                 >
                     Input your own and your coworkers hourly rates one by one and press "Start meeting"
                 </Text>
                 
-                <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
+                <Col horizontalAlignment={HorizontalAlignment.CENTER} marginTop={MarginTop.SMALL}>
                     <Form sm={11} md={6} onSubmit={ this.onSubmit }>
                         <Col>
                             <TextInput 
@@ -38,7 +38,7 @@ class InputField extends Component {
                             />
                         </Col>
                             
-                        <Col horizontalAlignment={"Center"} marginTop={"margin-top-small"} >
+                        <Col horizontalAlignment={HorizontalAlignment.CENTER} marginTop={MarginTop.SMALL} >
                             <Button text="Add" />
                         </Col>
                     </Form>
@@ -46,7 +46,7 @@ class InputField extends Component {
                         text={'Start meeting'} 
                         type='button'
                         onClick={ this.onTimerToggle }
-                        marginTop={'margin-top-small'}
+                        marginTop={MarginTop.SMALL}
                     />
                 </Col>
             </div>
