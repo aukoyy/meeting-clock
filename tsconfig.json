@@ -3,8 +3,10 @@
         "allowJs": true,
         "outDir": "./dist",
         "jsx": "react",
+        "moduleResolution": "node",
+        "rootDir": "src",
     },
     "include": [
-        "./src/"
+        "node_modules",
     ]
 }
