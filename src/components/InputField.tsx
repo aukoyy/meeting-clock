@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Button, Col, TextInput, Form, Text, MarginTop, HorizontalAlignment, FontStyle } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
 import { addSalary } from '../actions/salaryActions';
 import { toggleTimer } from '../actions/timerActions';
 
+interface InputFieldProps {
+}
 
-class InputField extends Component {
+class InputField extends React.Component<InputFieldProps> {
     constructor(props) {
         super(props)
         this.state = {
