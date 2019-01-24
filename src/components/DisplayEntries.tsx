@@ -1,6 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { Card, Col, MarginTop, CardType, Padding, HorizontalAlignment } from '@skillsets/react-components';
+
+/* export interface DisplayEntriesProps {
+    salaries: Array;
+} */
 
 class DisplayEntries extends React.Component {
     render () {
