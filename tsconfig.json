@@ -5,6 +5,7 @@
         "jsx": "react",
         "moduleResolution": "node",
         "rootDir": "src",
+        "baseUrl": "/"
     },
     "exclude": [
         "node_modules",
