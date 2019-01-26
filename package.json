@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@skillsets/react-components": "^0.6.13",
+    "firebase": "^5.8.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^6.0.0",
