@@ -1,0 +1,26 @@
+[debug] [2019-01-26T12:44:55.225Z] ----------------------------------------------------------------------
+[debug] [2019-01-26T12:44:55.228Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\auk_xps_w\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2019-01-26T12:44:55.228Z] CLI Version:   6.3.0
+[debug] [2019-01-26T12:44:55.228Z] Platform:      win32
+[debug] [2019-01-26T12:44:55.228Z] Node Version:  v10.6.0
+[debug] [2019-01-26T12:44:55.229Z] Time:          Sat Jan 26 2019 13:44:55 GMT+0100 (Central European Standard Time)
+[debug] [2019-01-26T12:44:55.229Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-01-26T12:44:55.239Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-01-26T12:44:55.240Z] > authorizing via signed-in user
+[debug] [2019-01-26T12:44:55.240Z] [iam] checking project meeting-clock for permissions ["firebase.projects.get"]
+[debug] [2019-01-26T12:44:55.243Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/meeting-clock:testIamPermissions  
+
+[debug] [2019-01-26T12:44:56.882Z] <<< HTTP RESPONSE 200
+[debug] [2019-01-26T12:44:56.886Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/meeting-clock  
+ 
+[debug] [2019-01-26T12:44:57.838Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\auk_xps_w\code\egne\meeting-clock'...
+[info] 
+[debug] [2019-01-26T12:44:57.844Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1014241843023/clients/_:getWebAppConfig  
+ 
+[debug] [2019-01-26T12:44:58.226Z] <<< HTTP RESPONSE 200
+[warn] !  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5005
