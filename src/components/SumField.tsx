@@ -4,6 +4,7 @@ import { Text, FontStyle, MarginTop, Col, HorizontalAlignment, Color } from '@sk
 
 import { updateSalarySum } from '../actions/salaryActions';
 import { incrementTimer } from '../actions/timerActions';
+import { AppState } from '../reducers/index';
 
 class SumFields extends React.Component {
   componentDidMount() {
@@ -78,14 +79,14 @@ class SumFields extends React.Component {
   } */
 }
 
-interface SumFieldPropTypes {
-  salaries: Number[],
-  salarySum: Number,
-  elapsedTime: Number,
-  timerShouldRun: boolean,
-}
+// interface SumFieldPropTypes {
+//   salaries: Number[],
+//   salarySum: Number,
+//   elapsedTime: Number,
+//   timerShouldRun: boolean,
+// }
 
-const mapStateToProps = (state): SumFieldPropTypes => ({
+const mapStateToProps = (state: AppState) => ({
     salaries: state.salaries.salaryArray,
     salarySum: state.salaries.salarySum,
     elapsedTime: state.timer.elapsedTime,

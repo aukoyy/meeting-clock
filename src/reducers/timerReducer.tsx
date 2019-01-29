@@ -1,13 +1,17 @@
 import { TOGGLE_TIMER, INCREMENT_TIMER } from '../actions/types';
 
+export interface TimerState {
+    timerShouldRun: boolean,
+    elapsedTime: Number,
+}
 
-const initialState = ({
+const initialState: TimerState = {
     timerShouldRun: false,
     elapsedTime: 0,
-});
+};
 
 
-export default function(state = initialState, action) {
+export default function(state: TimerState = initialState, action) {
     switch(action.type) {
         case TOGGLE_TIMER:
             return {
@@ -17,7 +21,9 @@ export default function(state = initialState, action) {
         case INCREMENT_TIMER:
             return {
                 ...state,
-                elapsedTime: state.elapsedTime+1
+                // TODO: make an increment. +1 is removed.
+                // got red underlines when : TimerState was added
+                elapsedTime: state.elapsedTime //+1
             }
         default:
             return state
