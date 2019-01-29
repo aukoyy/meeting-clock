@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { Text, FontStyle, MarginTop, Col, HorizontalAlignment, Color } from '@skillsets/react-components';
 
@@ -78,7 +78,14 @@ class SumFields extends React.Component {
   } */
 }
 
-const mapStateToProps = (state) => ({
+interface SumFieldPropTypes {
+  salaries: Number[],
+  salarySum: Number,
+  elapsedTime: Number,
+  timerShouldRun: boolean,
+}
+
+const mapStateToProps = (state): SumFieldPropTypes => ({
     salaries: state.salaries.salaryArray,
     salarySum: state.salaries.salarySum,
     elapsedTime: state.timer.elapsedTime,

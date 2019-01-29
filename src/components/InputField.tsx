@@ -81,7 +81,12 @@ class InputField extends React.Component<InputFieldProps> {
     }
 }
 
-const mapStateToProps = (state) => ({
+interface InpoutFieldPropTypes {
+    salaries: Number[],
+    timerShouldRun: boolean,
+}
+
+const mapStateToProps = (state): InpoutFieldPropTypes => ({
     salaries: state.salaries.salaryArray,
     timerShouldRun: state.timer.timerShouldRun,
 })

@@ -2,9 +2,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Card, Col, MarginTop, CardType, Padding, HorizontalAlignment } from '@skillsets/react-components';
 
-/* export interface DisplayEntriesProps {
-    salaries: Array;
-} */
 
 class DisplayEntries extends React.Component {
     render () {
@@ -34,7 +31,11 @@ class DisplayEntries extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
+interface DisplayEntriesPropsTypes {
+    salaries: Number[];
+}
+
+const mapStateToProps = (state): DisplayEntriesPropsTypes => ({
     /* salaries references the rootReducer index, salaryArray references the
     array defined in salaryReducer     */
     salaries: state.salaries.salaryArray
