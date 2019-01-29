@@ -6,6 +6,10 @@ import { addSalary } from '../actions/salaryActions';
 import { toggleTimer } from '../actions/timerActions';
 
 interface InputFieldProps {
+    salaries: Number[],
+    timerShouldRun: boolean,
+    addSalary: () => Number;
+    onSubmit: () => void;
 }
 
 class InputField extends React.Component<InputFieldProps> {
