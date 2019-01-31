@@ -1,8 +1,8 @@
 import { NEW_SALARY, UPDATE_SALARYSUM } from '../actions/types';
 
 export interface SalaryState {
-    salaryArray: Number[],
-    salarySum: Number,
+    salaryArray: number[],
+    salarySum: number,
 }
 
 const initialState: SalaryState = {
@@ -10,7 +10,7 @@ const initialState: SalaryState = {
     salarySum: 0,
 }
 
-export default function(state: SalaryState = initialState, action) {
+export default function(state: SalaryState = initialState, action: any) {
     switch(action.type) {
         case NEW_SALARY:
             return {

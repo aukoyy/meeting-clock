@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Card, Col, MarginTop, CardType, Padding, HorizontalAlignment } from '@skillsets/react-components';
+import { any } from 'prop-types';
+import { AppState } from '../reducers';
+
+interface DisplayEntriesProps {
+    salaries: number[];
+}
 
 
-class DisplayEntries extends React.Component {
+class DisplayEntries extends React.Component<DisplayEntriesProps, any> {
     render () {
         return (
             <Col horizontalAlignment={HorizontalAlignment.CENTER}>
@@ -32,10 +38,10 @@ class DisplayEntries extends React.Component {
 }
 
 interface DisplayEntriesPropsTypes {
-    salaries: Number[];
+    salaries: number[];
 }
 
-const mapStateToProps = (state): DisplayEntriesPropsTypes => ({
+const mapStateToProps = (state: AppState) => ({
     /* salaries references the rootReducer index, salaryArray references the
     array defined in salaryReducer     */
     salaries: state.salaries.salaryArray

@@ -6,7 +6,7 @@ import { updateSalarySum } from '../actions/salaryActions';
 import { incrementTimer } from '../actions/timerActions';
 import { AppState } from '../reducers/index';
 
-class SumFields extends React.Component {
+class SumFields extends React.Component<any, any> {
   componentDidMount() {
     setInterval(() => this.incrementTimer(), 1000)
   }
@@ -43,7 +43,7 @@ class SumFields extends React.Component {
     // another for render.
     const salaryArrayIsEmpty = this.props.salaries.length === 0;
     if(salaryArrayIsEmpty) return 0
-    const salarySum = this.props.salaries.reduce((sum, salary) => sum + salary);
+    const salarySum = this.props.salaries.reduce((sum: number, salary: number) => sum + salary);
     this.props.updateSalarySum(salarySum);
       return(
           this.props.salarySum
