@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, FontStyle, MarginTop, Col, HorizontalAlignment, Color } from '@skillsets/react-components';
+import { Text, FontStyle, MarginTop, Col, HorizontalAlignment } from '@skillsets/react-components';
 
 import { updateSalarySum } from '../actions/salaryActions';
 import { incrementTimer } from '../actions/timerActions';
