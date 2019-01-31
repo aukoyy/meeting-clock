@@ -1,6 +1,5 @@
 {
   "projects": {
-    "staging": "meeting-clock",
-    "default": "meeting-clock"
+    "staging": "meeting-clock"
   }
 }
