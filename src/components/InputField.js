@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Col, TextInput, Form, Text } from '@skillsets/react-components';
+import { Button, Col, TextInput, Form, Text, MarginTop, HorizontalAlignment, FontStyle } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
-import { addSalary, setSalarySum } from '../actions/salaryActions';
+import { addSalary } from '../actions/salaryActions';
 import { toggleTimer } from '../actions/timerActions';
 
 
@@ -12,23 +12,19 @@ class InputField extends Component {
         this.state = {
             hourlyRate: '',
         };
-
-        this.onChange = this.onChange.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
-        this.onTimerToggle = this.onTimerToggle.bind(this)
     }
 
     render() {
         return (
-            <div>
+            <Col horizontalAlignment={HorizontalAlignment.CENTER}>
                 <Text 
-                    fontStyle={2}
-                    marginTop={'margin-top-small'}
+                    fontStyle={FontStyle.NORMAL}
+                    marginTop={MarginTop.SMALL}
                 >
                     Input your own and your coworkers hourly rates one by one and press "Start meeting"
                 </Text>
                 
-                <Col horizontalAlignment={"Center"} marginTop={"margin-top-large"}>
+                <Col horizontalAlignment={HorizontalAlignment.CENTER} marginTop={MarginTop.SMALL}>
                     <Form sm={11} md={6} onSubmit={ this.onSubmit }>
                         <Col>
                             <TextInput 
@@ -38,38 +34,54 @@ class InputField extends Component {
                             />
                         </Col>
                             
-                        <Col horizontalAlignment={"Center"} marginTop={"margin-top-small"} >
+                        <Col marginTop={MarginTop.SMALL} horizontalAlignment={HorizontalAlignment.CENTER}>
                             <Button text="Add" />
                         </Col>
                     </Form>
-                    <Button 
-                        text={'Start meeting'} 
-                        type='button'
-                        onClick={ this.onTimerToggle }
-                        marginTop={'margin-top-small'}
-                    />
+                    { this.renderToggleTimerButton() }
                 </Col>
-            </div>
+            </Col>
         )
     }
 
-    onChange(rate) {
+    onChange = (rate) => {
         // this.setState({ [e.target.name]: e.target.value });
         this.setState({ hourlyRate: rate });
     };
 
-    onSubmit(e) { 
-        // e.preventDefault();  
+    onSubmit = (e) => { 
+        // e.preventDefault();
+        // TODO: Sanatize input so calculation can not get corrupted
         this.props.addSalary(this.props.salaries.concat([Number(this.state.hourlyRate)]));
     };
 
-    onTimerToggle(e) {
+    onTimerToggle = (e) => {
         this.props.toggleTimer();
+    }
+    renderToggleTimerButton = () => {
+        if(!this.props.timerShouldRun) {
+            return (
+                <Button 
+                    text={'Start meeting'} 
+                    onClick={ this.onTimerToggle }
+                    marginTop={MarginTop.TINY}
+                />
+            )
+        } else {
+            return (
+                <Button 
+                    text={'Pause meeting'} 
+                    onClick={ this.onTimerToggle }
+                    marginTop={MarginTop.TINY}
+                />
+            )
+        }
     }
 }
 
 const mapStateToProps = (state) => ({
-    salaries: state.salaries.salaryArray
+    salaries: state.salaries.salaryArray,
+    timerShouldRun: state.timer.timerShouldRun,
 })
 
-export default connect(mapStateToProps, { addSalary, setSalarySum, toggleTimer })(InputField);
+export default connect(mapStateToProps, { addSalary, toggleTimer })(InputField);

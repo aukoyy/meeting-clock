@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Col, Text } from '@skillsets/react-components';
+import { Col, Text, MarginTop, HorizontalAlignment, FontStyle } from '@skillsets/react-components';
 import { Provider } from 'react-redux';
 
 import store from './store';
@@ -9,17 +9,15 @@ import DisplayEntries from './components/DisplayEntries';
 import SumFields from './components/SumField';
 
 
-
-
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Col className="App" horizontalAlignment={'Center'}>
+        <Col className="App" horizontalAlignment={HorizontalAlignment.CENTER}>
             
             <Text 
-              fontStyle={0}
-              marginTop={'margin-top-large'}
+              fontStyle={FontStyle.TITLE}
+              marginTop={MarginTop.LARGE}
             >
               Meeting cost calculator
             </Text>
@@ -29,12 +27,10 @@ class App extends Component {
             <SumFields />
             <DisplayEntries />   
 
-        
         </Col>
       </Provider>
     );
   }
-
 }
 
 export default App;
