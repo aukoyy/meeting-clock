@@ -50,7 +50,7 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
                 </Text>
                 
                 <Col horizontalAlignment={HorizontalAlignment.CENTER} marginTop={MarginTop.SMALL}>
-                    <Form sm={6} md={3} onSubmit={ this.onSubmit }>
+                    <Form sm={6} md={3} onSubmit={ this.submitNewEmployee }>
                         <Col>
                             <TextInput 
                                 label='Name'
@@ -81,13 +81,14 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
         this.setState({ hourlyRate: rate });
     };
     changeInputNameState = (name?: string) => {
-        // this.setState({ [e.target.name]: e.target.value });
         this.setState({ inputName: name });
     };
 
-    // TODO: Sanatize input so calculation can not get corrupted
-    onSubmit = () => { 
+    submitNewEmployee = () => { 
         // e.preventDefault();
+        if(this.state.hourlyRate === undefined) return;
+        if(this.state.inputName === undefined) { this.setState({ inputName: 'Carl' }) }
+
         const employeeList = this.props.employees
         const incrementEmployeedId = employeeList[employeeList.length-1].id+1; 
         this.props.addEmployee(employeeList.concat([{
