@@ -12,7 +12,7 @@ export interface EmployeeState {
 }
 
 const initialState: EmployeeState = {
-    employeeArray: [{id: 0, name: 'Carl', salary: -1}],
+    employeeArray: [],
     salarySum: 0,
 }
 

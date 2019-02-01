@@ -86,11 +86,17 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
 
     submitNewEmployee = () => { 
         // e.preventDefault();
+
         if(this.state.hourlyRate === undefined) return;
         if(this.state.inputName === undefined) { this.setState({ inputName: 'Carl' }) }
 
         const employeeList = this.props.employees
-        const incrementEmployeedId = employeeList[employeeList.length-1].id+1; 
+        const incrementEmployeedId = (
+            employeeList.length > 0 
+                ? employeeList[employeeList.length-1].id+1
+                : 1
+        )
+        
         this.props.addEmployee(employeeList.concat([{
             id: incrementEmployeedId, 
             name: String(this.state.inputName),     
