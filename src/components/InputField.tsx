@@ -85,18 +85,16 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
         this.setState({ inputName: name });
     };
 
-
-
     // TODO: Sanatize input so calculation can not get corrupted
     onSubmit = () => { 
         // e.preventDefault();
         const employeeList = this.props.employees
-        this.props.addEmployee(this.props.employees.concat([{
-            id: employeeList[employeeList.length-1].id+1, 
-            name: String(this.state.inputName), 
+        const incrementEmployeedId = employeeList[employeeList.length-1].id+1; 
+        this.props.addEmployee(employeeList.concat([{
+            id: incrementEmployeedId, 
+            name: String(this.state.inputName),     
             salary: Number(this.state.hourlyRate)
         }]));
-        // this.props.addEmployee(this.props.employees.concat([{id: 1, name: 'Leonardo', salary: 200}]));
     };
 
     toogleTimer = () => {
@@ -122,7 +120,6 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
             )
         }
     }
-
 }
 
 const mapStateToProps = (state: AppState) => ({

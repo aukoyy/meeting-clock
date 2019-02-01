@@ -6,6 +6,7 @@ import { updateSalarySum } from '../actions/employeeActions';
 import { incrementTimer } from '../actions/timerActions';
 import { AppState } from '../reducers/index';
 import { Employee } from '../reducers/employeeReducer';
+import { number } from 'prop-types';
 
 interface SumFieldsOwnProps {}
 
@@ -50,33 +51,40 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
                 fontStyle={FontStyle.NORMAL}
                 marginTop={MarginTop.SMALL}
               >
-                Cost per hour: { this.computeSalarySum() }
+                Cost per hour: { this.renderSalarySum() }
               </Text>
               
               
           </Col>
       )
   }
-  computeSalarySum = () => {
-    // TODO: this is slightly confusing. there should be one function for compute and
-    // another for render.
-    // const salaryArrayIsEmpty = this.props.employees.length === 0;
-    // if(salaryArrayIsEmpty) return 0
-    // const salarySum = this.props.employees.salary.reduce((sum: number, salary: number) => sum + salary);
-    // this.props.updateSalarySum(salarySum);
-      return(
-          this.props.salarySum
-      );
+
+  renderSalarySum = () => {
+    this.computeSalarySum();
+    return this.props.salarySum
   };
+
+  computeSalarySum = () => {
+    const salaryArrayIsEmpty = this.props.employees.length === 0;
+    if(salaryArrayIsEmpty) return 0
+  
+    const salarySum = this.props.employees.map(employee => employee.salary)
+      .reduce((sum: number, salary: number) => sum + salary);
+
+    this.props.updateSalarySum(salarySum);
+  };
+
   incrementTimer(){
     if(!this.props.timerShouldRun) return
     this.props.incrementTimer();
   }
+
   renderElapsedTime() {
     return (
       this.props.elapsedTime
     )
   }
+
   calculateCostPerSecond = () => {
     const costPerSecond = this.props.salarySum / 60 / 60;
     return ((costPerSecond * this.props.elapsedTime).toFixed(2))
