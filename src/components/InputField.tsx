@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Col, NumberInput, Form, Text, MarginTop, HorizontalAlignment, FontStyle } from '@skillsets/react-components';
+import { Button, Col, NumberInput, Form, Text, MarginTop, HorizontalAlignment, FontStyle, TextInput } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
 import { addEmployee } from '../actions/employeeActions';
@@ -30,6 +30,7 @@ type InputFiledProps = InputFieldOwnProps & InputFieldStateProps & InputFieldDis
 
 interface InputFieldState {
     hourlyRate?: number;
+    inputName?: string;
 }
 
 class InputField extends React.Component<InputFiledProps, InputFieldState> {
@@ -49,12 +50,19 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
                 </Text>
                 
                 <Col horizontalAlignment={HorizontalAlignment.CENTER} marginTop={MarginTop.SMALL}>
-                    <Form sm={11} md={6} onSubmit={ this.onSubmit }>
+                    <Form sm={6} md={3} onSubmit={ this.onSubmit }>
+                        <Col>
+                            <TextInput 
+                                label='Name'
+                                value={ this.state.inputName }
+                                onValueChanged={ this.changeInputNameState }
+                            />
+                        </Col>
                         <Col>
                             <NumberInput 
                                 label='Salary'
                                 value={ this.state.hourlyRate }
-                                onValueChanged={ this.onChange }
+                                onValueChanged={ this.changeHourlyRateState }
                             />
                         </Col>
                             
@@ -68,17 +76,27 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
         )
     }
 
-    // Make better names
-    onChange = (rate?: number) => {
+    changeHourlyRateState = (rate?: number) => {
         // this.setState({ [e.target.name]: e.target.value });
         this.setState({ hourlyRate: rate });
     };
+    changeInputNameState = (name?: string) => {
+        // this.setState({ [e.target.name]: e.target.value });
+        this.setState({ inputName: name });
+    };
+
+
 
     // TODO: Sanatize input so calculation can not get corrupted
     onSubmit = () => { 
         // e.preventDefault();
-        this.props.addEmployee(this.props.employees.concat([{id: 1, name: 'Leonardo', salary: 200}]));
-        // this.props.addSalary(this.props.salaries.concat([Number(this.state.hourlyRate)]));
+        const employeeList = this.props.employees
+        this.props.addEmployee(this.props.employees.concat([{
+            id: employeeList[employeeList.length-1].id+1, 
+            name: String(this.state.inputName), 
+            salary: Number(this.state.hourlyRate)
+        }]));
+        // this.props.addEmployee(this.props.employees.concat([{id: 1, name: 'Leonardo', salary: 200}]));
     };
 
     toogleTimer = () => {
