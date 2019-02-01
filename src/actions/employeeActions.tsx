@@ -1,8 +1,9 @@
-import { NEW_SALARY, UPDATE_SALARYSUM } from './types';
+import { NEW_EMPLOYEE, UPDATE_SALARYSUM } from './types';
+import { Employee } from '../reducers/employeeReducer';
 
-export const addSalary = (amount: number) => ({
-  type: NEW_SALARY,
-  payload: amount,
+export const addEmployee = (employee: Employee) => ({
+  type: NEW_EMPLOYEE,
+  payload: employee,
 })
 
 export const updateSalarySum = (salarySum: number) => ({

@@ -1,5 +1,5 @@
 // Salary types
-export const NEW_SALARY = 'NEW_SALARY';
+export const NEW_EMPLOYEE = 'NEW_EMPLOYEE';
 export const UPDATE_SALARYSUM = 'UPDATE_SALARYSUM';
 
 // Timer types
