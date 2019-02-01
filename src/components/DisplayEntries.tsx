@@ -4,12 +4,20 @@ import { Card, Col, MarginTop, CardType, Padding, HorizontalAlignment } from '@s
 import { any } from 'prop-types';
 import { AppState } from '../reducers';
 
-interface DisplayEntriesProps {
+
+interface DisplayEntriesOwnProps {}
+
+interface DisplayEntriesStateProps {
     salaries: number[];
 }
 
+interface DisplayEntriesDispatchProps {}
 
-class DisplayEntries extends React.Component<DisplayEntriesProps, any> {
+type DisplayEntriesProps = DisplayEntriesStateProps & DisplayEntriesOwnProps & DisplayEntriesDispatchProps
+
+interface DisplayEntriesState {}
+
+class DisplayEntries extends React.Component<DisplayEntriesProps, DisplayEntriesState> {
     render () {
         return (
             <Col horizontalAlignment={HorizontalAlignment.CENTER}>
@@ -35,10 +43,6 @@ class DisplayEntries extends React.Component<DisplayEntriesProps, any> {
             </Col>
         )
     }
-}
-
-interface DisplayEntriesPropsTypes {
-    salaries: number[];
 }
 
 const mapStateToProps = (state: AppState) => ({

@@ -6,6 +6,12 @@ import { addSalary } from '../actions/salaryActions';
 import { toggleTimer } from '../actions/timerActions';
 import { AppState } from '../reducers';
 
+/* 
+    1. OwnProps
+    2. StateProps "state means redux state"
+    3. DispatchProps. Funtions/actions meant to change the state
+    4. State. Regular state
+*/
 
 interface InputFieldOwnProps {}
 
@@ -19,11 +25,11 @@ interface InputFieldDispatchProps {
     toggleTimer: () => void;
 }
 
+type InputFiledProps = InputFieldOwnProps & InputFieldStateProps & InputFieldDispatchProps
+
 interface InputFieldState {
     hourlyRate?: number;
 }
-
-type InputFiledProps = InputFieldOwnProps & InputFieldStateProps & InputFieldDispatchProps
 
 class InputField extends React.Component<InputFiledProps, InputFieldState> {
     constructor(props: InputFiledProps) {

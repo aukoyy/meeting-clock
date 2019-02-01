@@ -6,7 +6,25 @@ import { updateSalarySum } from '../actions/salaryActions';
 import { incrementTimer } from '../actions/timerActions';
 import { AppState } from '../reducers/index';
 
-class SumFields extends React.Component<any, any> {
+interface SumFieldsOwnProps {}
+
+interface SumFieldsStateProps {
+  salaries: number[],
+  salarySum: number,
+  elapsedTime: number,
+  timerShouldRun: boolean,
+}
+
+interface SumFieldsDispatchProps {
+  updateSalarySum: (salarySum: number) => void;
+  incrementTimer: () => void;
+}
+
+type SumFieldsProps = SumFieldsOwnProps & SumFieldsStateProps & SumFieldsDispatchProps
+
+interface SumFieldsState {}
+
+class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
   componentDidMount() {
     setInterval(() => this.incrementTimer(), 1000)
   }
@@ -79,13 +97,6 @@ class SumFields extends React.Component<any, any> {
   } */
 }
 
-// interface SumFieldPropTypes {
-//   salaries: Number[],
-//   salarySum: Number,
-//   elapsedTime: Number,
-//   timerShouldRun: boolean,
-// }
-
 const mapStateToProps = (state: AppState) => ({
     salaries: state.salaries.salaryArray,
     salarySum: state.salaries.salarySum,
@@ -93,7 +104,7 @@ const mapStateToProps = (state: AppState) => ({
     timerShouldRun: state.timer.timerShouldRun,
 })
 
-export default connect(mapStateToProps, { 
+export default connect<SumFieldsStateProps, SumFieldsDispatchProps, SumFieldsOwnProps>(mapStateToProps, { 
   updateSalarySum,
   incrementTimer,
  })(SumFields);
