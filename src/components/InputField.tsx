@@ -2,9 +2,10 @@ import * as React from 'react';
 import { Button, Col, NumberInput, Form, Text, MarginTop, HorizontalAlignment, FontStyle } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
-import { addSalary } from '../actions/salaryActions';
+import { addSalary } from '../actions/employeeActions';
 import { toggleTimer } from '../actions/timerActions';
 import { AppState } from '../reducers';
+import { Employee } from '../reducers/employeeReducer';
 
 /* 
     1. OwnProps
@@ -16,7 +17,7 @@ import { AppState } from '../reducers';
 interface InputFieldOwnProps {}
 
 interface InputFieldStateProps {
-    salaries: number[],
+    employees: Array<Employee>,
     timerShouldRun: boolean,
 }
 
@@ -109,7 +110,7 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
 }
 
 const mapStateToProps = (state: AppState): InputFieldStateProps => ({
-    salaries: state.salaries.salaryArray,
+    employees: state.employees.employeeArray,
     timerShouldRun: state.timer.timerShouldRun,
 })
 

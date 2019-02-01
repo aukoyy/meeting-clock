@@ -2,14 +2,15 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Text, FontStyle, MarginTop, Col, HorizontalAlignment, Color } from '@skillsets/react-components';
 
-import { updateSalarySum } from '../actions/salaryActions';
+import { updateSalarySum } from '../actions/employeeActions';
 import { incrementTimer } from '../actions/timerActions';
 import { AppState } from '../reducers/index';
+import { Employee } from '../reducers/employeeReducer';
 
 interface SumFieldsOwnProps {}
 
 interface SumFieldsStateProps {
-  salaries: number[],
+  employees: Array<Employee>,
   salarySum: number,
   elapsedTime: number,
   timerShouldRun: boolean,
@@ -59,10 +60,10 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
   computeSalarySum = () => {
     // TODO: this is slightly confusing. there should be one function for compute and
     // another for render.
-    const salaryArrayIsEmpty = this.props.salaries.length === 0;
-    if(salaryArrayIsEmpty) return 0
-    const salarySum = this.props.salaries.reduce((sum: number, salary: number) => sum + salary);
-    this.props.updateSalarySum(salarySum);
+    // const salaryArrayIsEmpty = this.props.employees.length === 0;
+    // if(salaryArrayIsEmpty) return 0
+    // const salarySum = this.props.employees.salary.reduce((sum: number, salary: number) => sum + salary);
+    // this.props.updateSalarySum(salarySum);
       return(
           this.props.salarySum
       );
@@ -98,8 +99,8 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-    salaries: state.salaries.salaryArray,
-    salarySum: state.salaries.salarySum,
+    employees: state.employees.employeeArray,
+    salarySum: state.employees.salarySum,
     elapsedTime: state.timer.elapsedTime,
     timerShouldRun: state.timer.timerShouldRun,
 })

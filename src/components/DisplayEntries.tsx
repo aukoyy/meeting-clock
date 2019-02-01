@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Card, Col, MarginTop, CardType, Padding, HorizontalAlignment } from '@skillsets/react-components';
-import { any } from 'prop-types';
 import { AppState } from '../reducers';
+import { Employee } from '../reducers/employeeReducer';
 
 
 interface DisplayEntriesOwnProps {}
 
 interface DisplayEntriesStateProps {
-    salaries: number[];
+    employees: Array<Employee>;
 }
 
 interface DisplayEntriesDispatchProps {}
@@ -22,18 +22,19 @@ class DisplayEntries extends React.Component<DisplayEntriesProps, DisplayEntries
         return (
             <Col horizontalAlignment={HorizontalAlignment.CENTER}>
                 {this.renderEntries()}
+                {this.props.employees[0].id}
             </Col>
         )
     }
     renderEntries = () => {
-        const salaryEntries = this.props.salaries.map(salary => (
+        const salaryEntries = this.props.employees.map(employee => (
             <Col marginTop={MarginTop.TINY}>
                 <Card 
                     cardType={CardType.FLAT} 
                     padding={Padding.SMALL} 
                     horizontalAlignment={HorizontalAlignment.CENTER}
                 >
-                    Participant: {salary}
+                    #{employee.id} - {employee.name}: {employee.salary}
                 </Card>
             </Col>
         ))
@@ -46,9 +47,7 @@ class DisplayEntries extends React.Component<DisplayEntriesProps, DisplayEntries
 }
 
 const mapStateToProps = (state: AppState) => ({
-    /* salaries references the rootReducer index, salaryArray references the
-    array defined in salaryReducer     */
-    salaries: state.salaries.salaryArray
+    employees: state.employees.employeeArray
 })
 
 export default connect(mapStateToProps, {})(DisplayEntries);

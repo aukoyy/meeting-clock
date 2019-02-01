@@ -1,17 +1,17 @@
 import { combineReducers } from 'redux'
 
-import salayReducer from './salaryReducer';
+import employeeReducer from './employeeReducer';
 import timerReducer from './timerReducer';
 
 import { TimerState } from './timerReducer';
-import { SalaryState } from './salaryReducer';
+import { EmployeeState } from './employeeReducer';
 
 export interface AppState {
-    salaries: SalaryState;
+    employees: EmployeeState;
     timer: TimerState;
 }
 
 export default combineReducers<AppState>({
-    salaries: salayReducer,
+    employees: employeeReducer,
     timer: timerReducer,
 });
