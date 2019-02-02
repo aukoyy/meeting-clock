@@ -17,12 +17,12 @@ import { Employee } from '../reducers/employeeReducer';
 interface InputFieldOwnProps {}
 
 interface InputFieldStateProps {
-    employees: Array<Employee>,
+    employees: Employee[],
     timerShouldRun: boolean,
 }
 
 interface InputFieldDispatchProps {
-    addEmployee: (employee: Array<Employee>) => void;
+    addEmployee: (employee: Employee[]) => void;
     toggleTimer: () => void;
 }
 

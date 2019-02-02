@@ -11,7 +11,7 @@ import { number } from 'prop-types';
 interface SumFieldsOwnProps {}
 
 interface SumFieldsStateProps {
-  employees: Array<Employee>,
+  employees: Employee[],
   salarySum: number,
   elapsedTime: number,
   timerShouldRun: boolean,

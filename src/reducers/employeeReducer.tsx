@@ -7,7 +7,7 @@ export interface Employee {
 }
 
 export interface EmployeeState {
-    employeeArray: Array<Employee>,
+    employeeArray: Employee[],
     salarySum: number,
 }
 

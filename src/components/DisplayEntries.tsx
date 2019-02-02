@@ -8,7 +8,7 @@ import { Employee } from '../reducers/employeeReducer';
 interface DisplayEntriesOwnProps {}
 
 interface DisplayEntriesStateProps {
-    employees: Array<Employee>;
+    employees: Employee[];
 }
 
 interface DisplayEntriesDispatchProps {}
