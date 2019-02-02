@@ -13,7 +13,7 @@ interface SumFieldsOwnProps {}
 interface SumFieldsStateProps {
   employees: Employee[],
   salarySum: number,
-  elapsedTime: number,
+  durationInSeconds: number,
   timerShouldRun: boolean,
 }
 
@@ -83,35 +83,32 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
 
   renderElapsedTime() {
     return (
-      (this.props.elapsedTime).toFixed(0)
+      this.props.durationInSeconds.toFixed(0)
     )
   }
 
-  calculateCostPerSecond = () => {
+/*   calculateCostPerSecond = () => {
     const costPerSecond = this.props.salarySum / 60 / 60;
     return ((costPerSecond * this.props.elapsedTime).toFixed(1))
-  }
-  /* 
-    TODO: can be made more readable like so. 
-    Not implementet because it returned NaN
-
-    calculateCostPerSecond = () => {
-    const SECONDS_PER_HOUR = 60 * 60
-    const costPerSecond = this.props.hourlySalarySum / SECONDS_PER_HOUR; 
-    const durationInSeconds = this.props.elapsedTime; // ideally I'd change this.props.elapsedTime => durationInSeconds to clarify the intent of the variable
-    const totalMeetingCost = costPerSecond * durationInSeconds; //easier to understand the next line when extracting calculations to own variables
-    console.log(totalMeetingCost)
-    return this.roundToTwoDigits(totalMeetingCost) //easier to read an internal function name than to understand what .toFixed() does (though one could argue developers should know the .js api...)
-  }
-  roundToTwoDigits = (numberToRound) => {
-    return numberToRound.toFixed(2);
   } */
+  
+  // hourlySalarySum
+  calculateCostPerSecond = () => {
+    const SECONDS_PER_HOUR = 60 * 60
+    const costPerSecond = this.props.salarySum / SECONDS_PER_HOUR; 
+    const totalMeetingCost = costPerSecond * this.props.durationInSeconds; 
+    console.log(totalMeetingCost)
+    return this.roundToTwoDigits(totalMeetingCost) 
+  }
+  roundToTwoDigits = (numberToRound: number) => {
+    return numberToRound.toFixed(2);
+  }
 }
 
 const mapStateToProps = (state: AppState) => ({
     employees: state.employees.employees,
     salarySum: state.employees.salarySum,
-    elapsedTime: state.timer.elapsedTime,
+    durationInSeconds: state.timer.durationInSeconds,
     timerShouldRun: state.timer.timerShouldRun,
 })
 

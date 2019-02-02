@@ -4,12 +4,12 @@ const MILLISECOND = 0.01;
 
 export interface TimerState {
     timerShouldRun: boolean,
-    elapsedTime: number,
+    durationInSeconds: number,
 }
 
 const initialState: TimerState = {
     timerShouldRun: false,
-    elapsedTime: 0,
+    durationInSeconds: 0,
 };
 
 
@@ -23,7 +23,7 @@ export default function(state: TimerState = initialState, action: any) {
         case INCREMENT_TIMER:
             return {
                 ...state,
-                elapsedTime: state.elapsedTime+MILLISECOND
+                durationInSeconds: state.durationInSeconds+MILLISECOND
             }
         default:
             return state
