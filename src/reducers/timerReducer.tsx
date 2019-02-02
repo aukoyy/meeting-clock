@@ -1,5 +1,7 @@
 import { TOGGLE_TIMER, INCREMENT_TIMER } from '../actions/types';
 
+const MILLISECOND = 0.01;
+
 export interface TimerState {
     timerShouldRun: boolean,
     elapsedTime: number,
@@ -21,7 +23,7 @@ export default function(state: TimerState = initialState, action: any) {
         case INCREMENT_TIMER:
             return {
                 ...state,
-                elapsedTime: state.elapsedTime+1
+                elapsedTime: state.elapsedTime+MILLISECOND
             }
         default:
             return state

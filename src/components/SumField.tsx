@@ -28,7 +28,10 @@ interface SumFieldsState {}
 
 class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
   componentDidMount() {
-    setInterval(() => this.incrementTimer(), 1000)
+    setInterval(() => {
+      this.computeSalarySum();
+      this.incrementTimer();
+    }, 10);
   }
   render () {
       return (
@@ -60,7 +63,6 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
   }
 
   renderSalarySum = () => {
-    this.computeSalarySum();
     return this.props.salarySum
   };
 
@@ -81,13 +83,13 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
 
   renderElapsedTime() {
     return (
-      this.props.elapsedTime
+      (this.props.elapsedTime).toFixed(0)
     )
   }
 
   calculateCostPerSecond = () => {
     const costPerSecond = this.props.salarySum / 60 / 60;
-    return ((costPerSecond * this.props.elapsedTime).toFixed(2))
+    return ((costPerSecond * this.props.elapsedTime).toFixed(1))
   }
   /* 
     TODO: can be made more readable like so. 
