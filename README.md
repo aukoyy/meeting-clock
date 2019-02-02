@@ -3,11 +3,10 @@
 
 
 ## TODO
-- Add link to github
 - why does firebase deploy often return just a white page??
 - Implement a remove function for entries
 
-## How to use
+## How to install
 
 * Clone repo into local directory
 * ### `npm install`

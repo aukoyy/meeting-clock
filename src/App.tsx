@@ -14,7 +14,14 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <Col className="App" horizontalAlignment={HorizontalAlignment.CENTER}>
-            
+              <Text
+                fontStyle={FontStyle.COMPONENT_TITLE}
+                marginTop={MarginTop.LARGE}
+              >
+                <a href="https://github.com/aukcode/meeting-clock" target="_blank">
+                  github
+                </a>
+              </Text>
             <Text 
               fontStyle={FontStyle.TITLE}
               marginTop={MarginTop.LARGE}

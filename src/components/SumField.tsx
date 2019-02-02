@@ -6,7 +6,6 @@ import { updateSalarySum } from '../actions/employeeActions';
 import { incrementTimer } from '../actions/timerActions';
 import { AppState } from '../reducers/index';
 import { Employee } from '../reducers/employeeReducer';
-import { number } from 'prop-types';
 
 interface SumFieldsOwnProps {}
 
