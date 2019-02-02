@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import './App.css';
 import { Col, Text, MarginTop, HorizontalAlignment, FontStyle } from '@skillsets/react-components';
 import { Provider } from 'react-redux';
@@ -9,7 +9,7 @@ import DisplayEntries from './components/DisplayEntries';
 import SumFields from './components/SumField';
 
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
