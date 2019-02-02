@@ -107,7 +107,7 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-    employees: state.employees.employeeArray,
+    employees: state.employees.employees,
     salarySum: state.employees.salarySum,
     elapsedTime: state.timer.elapsedTime,
     timerShouldRun: state.timer.timerShouldRun,

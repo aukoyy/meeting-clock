@@ -46,7 +46,7 @@ class DisplayEntries extends React.Component<DisplayEntriesProps, DisplayEntries
 }
 
 const mapStateToProps = (state: AppState) => ({
-    employees: state.employees.employeeArray
+    employees: state.employees.employees
 })
 
 export default connect(mapStateToProps, {})(DisplayEntries);

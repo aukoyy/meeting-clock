@@ -76,12 +76,13 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
         )
     }
 
-    changeHourlyRateState = (rate?: number) => {
+    changeHourlyRateState = (hourlyRate?: number) => {
         // this.setState({ [e.target.name]: e.target.value });
-        this.setState({ hourlyRate: rate });
+        this.setState({ hourlyRate });
+        // Same as: this.setState({ hourlyRate: hourlyRate });
     };
-    changeInputNameState = (name?: string) => {
-        this.setState({ inputName: name });
+    changeInputNameState = (inputName?: string) => {
+        this.setState({ inputName });
     };
 
     submitNewEmployee = () => { 
@@ -91,14 +92,9 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
         if(this.state.inputName === undefined) { this.setState({ inputName: 'Carl' }) }
 
         const employeeList = this.props.employees
-        const incrementEmployeedId = (
-            employeeList.length > 0 
-                ? employeeList[employeeList.length-1].id+1
-                : 1
-        )
         
         this.props.addEmployee(employeeList.concat([{
-            id: incrementEmployeedId, 
+            id: employeeList.length+1,
             name: String(this.state.inputName),     
             salary: Number(this.state.hourlyRate)
         }]));
@@ -130,7 +126,7 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-    employees: state.employees.employeeArray,
+    employees: state.employees.employees,
     timerShouldRun: state.timer.timerShouldRun,
 })
 

@@ -7,12 +7,12 @@ export interface Employee {
 }
 
 export interface EmployeeState {
-    employeeArray: Employee[],
+    employees: Employee[],
     salarySum: number,
 }
 
 const initialState: EmployeeState = {
-    employeeArray: [],
+    employees: [],
     salarySum: 0,
 }
 
@@ -23,7 +23,7 @@ export default function(state: EmployeeState = initialState, action: any) {
         case ADD_EMPLOYEE:
             return {
                 ...state,
-                employeeArray: action.payload,
+                employees: action.payload,
             }
         case UPDATE_SALARYSUM:
             return {
