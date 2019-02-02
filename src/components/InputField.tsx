@@ -1,36 +1,42 @@
 import * as React from 'react';
-import { Button, Col, NumberInput, Form, Text, MarginTop, HorizontalAlignment, FontStyle } from '@skillsets/react-components';
+import { Button, Col, NumberInput, Form, Text, MarginTop, HorizontalAlignment, FontStyle, TextInput } from '@skillsets/react-components';
 import { connect } from 'react-redux';
 
-import { addSalary } from '../actions/salaryActions';
+import { addEmployee } from '../actions/employeeActions';
 import { toggleTimer } from '../actions/timerActions';
 import { AppState } from '../reducers';
+import { Employee } from '../reducers/employeeReducer';
 
+/* 
+    1. OwnProps
+    2. StateProps "state means redux state"
+    3. DispatchProps. Funtions/actions meant to change the state
+    4. State. Regular state
+*/
 
 interface InputFieldOwnProps {}
 
 interface InputFieldStateProps {
-    salaries: number[],
+    employees: Employee[],
     timerShouldRun: boolean,
 }
 
 interface InputFieldDispatchProps {
-    addSalary: (salarywhatever: number) => void;
+    addEmployee: (employee: Employee[]) => void;
     toggleTimer: () => void;
-}
-
-interface InputFieldState {
-    hourlyRate?: number;
 }
 
 type InputFiledProps = InputFieldOwnProps & InputFieldStateProps & InputFieldDispatchProps
 
+interface InputFieldState {
+    hourlyRate?: number;
+    inputName?: string;
+}
+
 class InputField extends React.Component<InputFiledProps, InputFieldState> {
     constructor(props: InputFiledProps) {
         super(props)
-        this.state = {
-            // hourlyRate: 0,
-        };
+        this.state = {};
     }
 
     render() {
@@ -44,12 +50,19 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
                 </Text>
                 
                 <Col horizontalAlignment={HorizontalAlignment.CENTER} marginTop={MarginTop.SMALL}>
-                    <Form sm={11} md={6} onSubmit={ this.onSubmit }>
+                    <Form sm={6} md={3} onSubmit={ this.submitNewEmployee }>
+                        <Col>
+                            <TextInput 
+                                label='Name'
+                                value={ this.state.inputName }
+                                onValueChanged={ this.changeInputNameState }
+                            />
+                        </Col>
                         <Col>
                             <NumberInput 
                                 label='Salary'
                                 value={ this.state.hourlyRate }
-                                onValueChanged={ this.onChange }
+                                onValueChanged={ this.changeHourlyRateState }
                             />
                         </Col>
                             
@@ -63,17 +76,21 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
         )
     }
 
-    // Make better names
-    onChange = (rate?: number) => {
-        // this.setState({ [e.target.name]: e.target.value });
-        this.setState({ hourlyRate: rate });
-    };
+    changeHourlyRateState = (hourlyRate?: number) => this.setState({ hourlyRate });
 
-    onSubmit = () => { 
-        // e.preventDefault();
-        // TODO: Sanatize input so calculation can not get corrupted
-        this.props.addSalary(200);
-        // this.props.addSalary(this.props.salaries.concat([Number(this.state.hourlyRate)]));
+    changeInputNameState = (inputName?: string) => this.setState({ inputName });
+
+    submitNewEmployee = () => { 
+        if(this.state.hourlyRate === undefined) return;
+        if(this.state.inputName === undefined) { this.setState({ inputName: 'Carl' }) }
+
+        const employeeList = this.props.employees
+        
+        this.props.addEmployee(employeeList.concat([{
+            id: employeeList.length+1,
+            name: String(this.state.inputName),     
+            salary: Number(this.state.hourlyRate)
+        }]));
     };
 
     toogleTimer = () => {
@@ -99,12 +116,11 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
             )
         }
     }
-
 }
 
-const mapStateToProps = (state: AppState): InputFieldStateProps => ({
-    salaries: state.salaries.salaryArray,
+const mapStateToProps = (state: AppState) => ({
+    employees: state.employees.employees,
     timerShouldRun: state.timer.timerShouldRun,
 })
 
-export default connect<InputFieldStateProps, InputFieldDispatchProps, InputFieldOwnProps>(mapStateToProps, { addSalary, toggleTimer })(InputField);
+export default connect<InputFieldStateProps, InputFieldDispatchProps, InputFieldOwnProps>(mapStateToProps, { addEmployee, toggleTimer })(InputField);

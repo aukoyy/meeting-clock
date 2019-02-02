@@ -1,15 +1,23 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Card, Col, MarginTop, CardType, Padding, HorizontalAlignment } from '@skillsets/react-components';
-import { any } from 'prop-types';
 import { AppState } from '../reducers';
+import { Employee } from '../reducers/employeeReducer';
 
-interface DisplayEntriesProps {
-    salaries: number[];
+
+interface DisplayEntriesOwnProps {}
+
+interface DisplayEntriesStateProps {
+    employees: Employee[];
 }
 
+interface DisplayEntriesDispatchProps {}
 
-class DisplayEntries extends React.Component<DisplayEntriesProps, any> {
+type DisplayEntriesProps = DisplayEntriesStateProps & DisplayEntriesOwnProps & DisplayEntriesDispatchProps
+
+interface DisplayEntriesState {}
+
+class DisplayEntries extends React.Component<DisplayEntriesProps, DisplayEntriesState> {
     render () {
         return (
             <Col horizontalAlignment={HorizontalAlignment.CENTER}>
@@ -18,14 +26,14 @@ class DisplayEntries extends React.Component<DisplayEntriesProps, any> {
         )
     }
     renderEntries = () => {
-        const salaryEntries = this.props.salaries.map(salary => (
-            <Col marginTop={MarginTop.TINY}>
+        const salaryEntries = this.props.employees.map(employee => (
+            <Col key={employee.id} marginTop={MarginTop.TINY}>
                 <Card 
                     cardType={CardType.FLAT} 
                     padding={Padding.SMALL} 
                     horizontalAlignment={HorizontalAlignment.CENTER}
                 >
-                    Participant: {salary}
+                    Employee #{employee.id} - {employee.name}: {employee.salary}
                 </Card>
             </Col>
         ))
@@ -37,14 +45,8 @@ class DisplayEntries extends React.Component<DisplayEntriesProps, any> {
     }
 }
 
-interface DisplayEntriesPropsTypes {
-    salaries: number[];
-}
-
 const mapStateToProps = (state: AppState) => ({
-    /* salaries references the rootReducer index, salaryArray references the
-    array defined in salaryReducer     */
-    salaries: state.salaries.salaryArray
+    employees: state.employees.employees
 })
 
 export default connect(mapStateToProps, {})(DisplayEntries);
