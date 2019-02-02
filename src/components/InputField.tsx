@@ -76,18 +76,11 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
         )
     }
 
-    changeHourlyRateState = (hourlyRate?: number) => {
-        // this.setState({ [e.target.name]: e.target.value });
-        this.setState({ hourlyRate });
-        // Same as: this.setState({ hourlyRate: hourlyRate });
-    };
-    changeInputNameState = (inputName?: string) => {
-        this.setState({ inputName });
-    };
+    changeHourlyRateState = (hourlyRate?: number) => this.setState({ hourlyRate });
+
+    changeInputNameState = (inputName?: string) => this.setState({ inputName });
 
     submitNewEmployee = () => { 
-        // e.preventDefault();
-
         if(this.state.hourlyRate === undefined) return;
         if(this.state.inputName === undefined) { this.setState({ inputName: 'Carl' }) }
 
