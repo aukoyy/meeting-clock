@@ -1,4 +1,4 @@
-import { NEW_EMPLOYEE, UPDATE_SALARYSUM } from '../actions/types';
+import { ADD_EMPLOYEE, UPDATE_SALARYSUM } from '../actions/types';
 
 export interface Employee {
     id: number;
@@ -20,7 +20,7 @@ const initialState: EmployeeState = {
 // TODO: implement action types
 export default function(state: EmployeeState = initialState, action: any) {
     switch(action.type) {
-        case NEW_EMPLOYEE:
+        case ADD_EMPLOYEE:
             return {
                 ...state,
                 employeeArray: action.payload,

@@ -1,8 +1,8 @@
-import { NEW_EMPLOYEE, UPDATE_SALARYSUM } from './types';
+import { ADD_EMPLOYEE, UPDATE_SALARYSUM } from './types';
 import { Employee } from '../reducers/employeeReducer';
 
 export const addEmployee = (employee: Employee) => ({
-  type: NEW_EMPLOYEE,
+  type: ADD_EMPLOYEE,
   payload: employee,
 })
 
