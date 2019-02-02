@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Text, FontStyle, MarginTop, Col, HorizontalAlignment, Color } from '@skillsets/react-components';
+import { Text, FontStyle, MarginTop, Col, HorizontalAlignment } from '@skillsets/react-components';
 
 import { updateSalarySum } from '../actions/employeeActions';
 import { incrementTimer } from '../actions/timerActions';
@@ -18,6 +18,7 @@ interface SumFieldsStateProps {
 }
 
 interface SumFieldsDispatchProps {
+  // TODO: salary sum really is a computed value it needn't be stored in the state at all :)
   updateSalarySum: (salarySum: number) => void;
   incrementTimer: () => void;
 }
@@ -47,6 +48,7 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
                 fontStyle={FontStyle.NORMAL}
                 marginTop={MarginTop.SMALL}
               >
+                {/* TODO: make render function that renders correct time format */}
                 Elapsed time: { this.renderElapsedTime() } seconds
               </Text>
 
@@ -87,23 +89,13 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
     )
   }
 
-/*   calculateCostPerSecond = () => {
-    const costPerSecond = this.props.salarySum / 60 / 60;
-    return ((costPerSecond * this.props.elapsedTime).toFixed(1))
-  } */
-  
-  // hourlySalarySum
   calculateCostPerSecond = () => {
-    const SECONDS_PER_HOUR = 60 * 60
+    const SECONDS_PER_HOUR = 60 * 60;
     const costPerSecond = this.props.salarySum / SECONDS_PER_HOUR; 
     const totalMeetingCost = costPerSecond * this.props.durationInSeconds; 
-    console.log(totalMeetingCost)
-    return this.roundToTwoDigits(totalMeetingCost) 
-  }
-  roundToTwoDigits = (numberToRound: number) => {
-    return numberToRound.toFixed(2);
-  }
-}
+    return totalMeetingCost.toFixed(2);
+  };
+};
 
 const mapStateToProps = (state: AppState) => ({
     employees: state.employees.employees,
