@@ -29,3 +29,7 @@ export default function(state: TimerState = initialState, action: any) {
             return state
     }
 }
+
+// expect(
+//     timerReducer(0, { type: INCREMENT_TIMER})
+// ).toEqual(1);
