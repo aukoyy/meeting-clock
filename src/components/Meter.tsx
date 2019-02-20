@@ -1,8 +1,9 @@
 import { AppState } from '../reducers/index';
-import { Col, Text, FontStyle, MarginTop } from '@skillsets/react-components';
+import { Col, Text, FontStyle, MarginTop, HorizontalAlignment, FontSize, FontWeight } from '@skillsets/react-components';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
+import './Meter.css';
 
 interface MeterProps {
     salarySum: number;
@@ -12,12 +13,14 @@ interface MeterProps {
 class Meter extends React.Component<MeterProps> {
     render() {
         return (
-            <Col>
-                <Text
+            <Col horizontalAlignment={HorizontalAlignment.CENTER}>
+                <Text className='meter-text'
                     fontStyle={FontStyle.COMPONENT_TITLE}
                     marginTop={MarginTop.LARGE}
+                    fontSize={FontSize.HUGE}
+                    fontWeight={FontWeight.BOLD}
                 >
-                    Meeting cost: { this.calculateCostPerSecond() }
+                    { this.calculateCostPerSecond() }
                 </Text>    
             </Col>
         )

@@ -7,6 +7,7 @@ import store from './store';
 import InputField from './components/InputField';
 import DisplayEntries from './components/DisplayEntries';
 import SumFields from './components/SumField';
+import Meter from './components/Meter';
 
 
 class App extends React.Component {
@@ -28,9 +29,12 @@ class App extends React.Component {
                 Input your own and your co-workers hourly rates one by one and press "Start meeting"
             </Text>
         
+            <Meter />
+
             <InputField />
             
             <SumFields />
+            
             <DisplayEntries />   
 
         </Col>
