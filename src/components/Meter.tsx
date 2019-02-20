@@ -25,6 +25,7 @@ class Meter extends React.Component<MeterProps> {
             </Col>
         )
     }
+    
     calculateCostPerSecond = () => {
         const SECONDS_PER_HOUR = 60 * 60;
         const costPerSecond = this.props.salarySum / SECONDS_PER_HOUR; 
