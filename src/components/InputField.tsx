@@ -38,7 +38,6 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
         super(props)
         this.state = {};
     }
-
     render() {
         return (
             <Col horizontalAlignment={HorizontalAlignment.CENTER}>
@@ -91,6 +90,7 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
         this.props.toggleTimer();
     }
 
+    // TODO: toggle button could be in App.tsx or own component
     renderToggleTimerButton = () => {
         if(!this.props.timerShouldRun) {
             return (
@@ -117,4 +117,7 @@ const mapStateToProps = (state: AppState) => ({
     timerShouldRun: state.timer.timerShouldRun,
 })
 
-export default connect<InputFieldStateProps, InputFieldDispatchProps, InputFieldOwnProps>(mapStateToProps, { addEmployee, toggleTimer })(InputField);
+export default connect<InputFieldStateProps, InputFieldDispatchProps, InputFieldOwnProps>(mapStateToProps, { 
+    addEmployee, 
+    toggleTimer 
+})(InputField);
