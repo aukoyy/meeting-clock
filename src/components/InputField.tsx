@@ -42,13 +42,6 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
     render() {
         return (
             <Col horizontalAlignment={HorizontalAlignment.CENTER}>
-                <Text 
-                    fontStyle={FontStyle.NORMAL}
-                    marginTop={MarginTop.SMALL}
-                >
-                    Input your own and your coworkers hourly rates one by one and press "Start meeting"
-                </Text>
-                
                 <Col horizontalAlignment={HorizontalAlignment.CENTER} marginTop={MarginTop.SMALL}>
                     <Form sm={6} md={3} onSubmit={ this.submitNewEmployee }>
                         <Col>
@@ -60,7 +53,7 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
                         </Col>
                         <Col>
                             <NumberInput 
-                                label='Salary'
+                                label='Rate'
                                 value={ this.state.hourlyRate }
                                 onValueChanged={ this.changeHourlyRateState }
                             />
@@ -82,6 +75,7 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
 
     submitNewEmployee = () => { 
         if(this.state.hourlyRate === undefined) return;
+        // TODO: returns carl only from second submition
         if(this.state.inputName === undefined) { this.setState({ inputName: 'Carl' }) }
 
         const employeeList = this.props.employees

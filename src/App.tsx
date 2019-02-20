@@ -18,9 +18,16 @@ class App extends React.Component {
               fontStyle={FontStyle.TITLE}
               marginTop={MarginTop.LARGE}
             >
-              Meeting cost calculator
+              Meeting cost meter
             </Text>
-            
+
+            <Text 
+                fontStyle={FontStyle.NORMAL}
+                marginTop={MarginTop.SMALL}
+            >
+                Input your own and your co-workers hourly rates one by one and press "Start meeting"
+            </Text>
+        
             <InputField />
             
             <SumFields />
