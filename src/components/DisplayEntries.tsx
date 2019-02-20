@@ -38,7 +38,7 @@ class DisplayEntries extends React.Component<DisplayEntriesProps, DisplayEntries
             </Col>
         ))
         return (
-            <Col md={3} lg={2}>
+            <Col md={2} lg={2}>
                 {salaryEntries}
             </Col>
         )

@@ -1,7 +1,7 @@
 import { AppState } from '../reducers/index';
 import { Col, Text, FontStyle, MarginTop, HorizontalAlignment, FontSize, FontWeight } from '@skillsets/react-components';
-import * as React from 'react';
 import { connect } from 'react-redux';
+import * as React from 'react';
 
 import './Meter.css';
 
