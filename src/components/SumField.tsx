@@ -41,7 +41,7 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
                 marginTop={MarginTop.SMALL}
               >
                 {/* TODO: make render function that renders correct time format */}
-                Elapsed time: { this.renderElapsedTime() } seconds
+                Elapsed time: { this.renderElapsedTime() }
               </Text>
 
               <Text
@@ -74,9 +74,18 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
   }
 
   renderElapsedTime() {
-    return (
-      this.props.durationInSeconds.toFixed(0)
-    )
+    const elapsedTimeInSeconds = this.props.durationInSeconds;
+    const hrs = ~~(elapsedTimeInSeconds / 3600);
+    const mins = ~~((elapsedTimeInSeconds % 3600) / 60);
+    const secs = ~~elapsedTimeInSeconds % 60;
+
+    let formattedTime = "";
+    if (hrs > 0) {
+        formattedTime += "" + hrs + ":" + (mins < 10 ? "0" : "");
+    }
+    formattedTime += "" + mins + ":" + (secs < 10 ? "0" : "");
+    formattedTime += "" + secs;
+    return formattedTime
   }
 };
 
