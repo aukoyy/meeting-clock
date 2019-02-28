@@ -3,8 +3,7 @@
 
 
 ## TODO
-- why does firebase deploy often return just a white page??
-- Implement a remove function for entries
+- 
 
 ## How to install
 
