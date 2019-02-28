@@ -33,12 +33,12 @@ class DisplayEntries extends React.Component<DisplayEntriesProps, DisplayEntries
                     padding={Padding.SMALL} 
                     horizontalAlignment={HorizontalAlignment.CENTER}
                 >
-                    Employee #{employee.id} - {employee.name}: {employee.salary}
+                    <b>{employee.name}: {employee.salary}</b>
                 </Card>
             </Col>
         ))
         return (
-            <Col md={3} lg={4}>
+            <Col md={2} lg={2}>
                 {salaryEntries}
             </Col>
         )

@@ -37,13 +37,6 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
       return (
           <Col horizontalAlignment={HorizontalAlignment.CENTER}>
               <Text
-                fontStyle={FontStyle.COMPONENT_TITLE}
-                marginTop={MarginTop.LARGE}
-              >
-                Meeting cost: { this.calculateCostPerSecond() }
-              </Text>
-
-              <Text
                 fontStyle={FontStyle.NORMAL}
                 marginTop={MarginTop.SMALL}
               >
@@ -57,8 +50,6 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
               >
                 Cost per hour: { this.renderSalarySum() }
               </Text>
-              
-              
           </Col>
       )
   }
@@ -87,13 +78,6 @@ class SumFields extends React.Component<SumFieldsProps, SumFieldsState> {
       this.props.durationInSeconds.toFixed(0)
     )
   }
-
-  calculateCostPerSecond = () => {
-    const SECONDS_PER_HOUR = 60 * 60;
-    const costPerSecond = this.props.salarySum / SECONDS_PER_HOUR; 
-    const totalMeetingCost = costPerSecond * this.props.durationInSeconds; 
-    return totalMeetingCost.toFixed(2);
-  };
 };
 
 const mapStateToProps = (state: AppState) => ({

@@ -7,6 +7,7 @@ import store from './store';
 import InputField from './components/InputField';
 import DisplayEntries from './components/DisplayEntries';
 import SumFields from './components/SumField';
+import Meter from './components/Meter';
 
 
 class App extends React.Component {
@@ -18,12 +19,22 @@ class App extends React.Component {
               fontStyle={FontStyle.TITLE}
               marginTop={MarginTop.LARGE}
             >
-              Meeting cost calculator
+              Meeting cost meter
             </Text>
-            
+
+            <Text 
+                fontStyle={FontStyle.NORMAL}
+                marginTop={MarginTop.SMALL}
+            >
+                Input your own and your co-workers hourly rates one by one and press "Start meeting"
+            </Text>
+        
+            <Meter />
+
             <InputField />
             
             <SumFields />
+            
             <DisplayEntries />   
 
         </Col>
