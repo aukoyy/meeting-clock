@@ -74,14 +74,12 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
 
     submitNewEmployee = () => { 
         if(this.state.hourlyRate === undefined) return;
-        // TODO: returns carl only from second submition
-        if(this.state.inputName === undefined) { this.setState({ inputName: 'Carl' }) }
 
         const employeeList = this.props.employees
         
         this.props.addEmployee(employeeList.concat([{
             id: employeeList.length+1,
-            name: String(this.state.inputName),     
+            name: String(this.state.inputName === undefined ? "Carl" : this.state.inputName),     
             salary: Number(this.state.hourlyRate)
         }]));
     };
@@ -90,7 +88,6 @@ class InputField extends React.Component<InputFiledProps, InputFieldState> {
         this.props.toggleTimer();
     }
 
-    // TODO: toggle button could be in App.tsx or own component
     renderToggleTimerButton = () => {
         if(!this.props.timerShouldRun) {
             return (
