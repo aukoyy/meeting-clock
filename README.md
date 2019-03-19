@@ -1,10 +1,7 @@
 
 # Meeting-cost app
+This is a meeting clock created in react. The app was conceived long into a tedious meeting in which many bright heads had their precious time promptly wasted. In it you can add the salaries for yourself and your collages and calculate how much money you are actually spending on the meeting.
 
-
-## TODO
-- why does firebase deploy often return just a white page??
-- Implement a remove function for entries
 
 ## How to install
 
